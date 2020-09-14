@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Poolers</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Email</th>
+      <th>Name</th>
+      <th>Favteam</th>
+      <th>Token</th>
+      <th>Refresh token</th>
+      <th>Accesslevel</th>
+      <th>Pool</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @poolers.each do |pooler| %>
+      <tr>
+        <td><%= pooler.email %></td>
+        <td><%= pooler.name %></td>
+        <td><%= pooler.favTeam %></td>
+        <td><%= pooler.token %></td>
+        <td><%= pooler.refresh_token %></td>
+        <td><%= pooler.accessLevel %></td>
+        <td><%= pooler.pool_id %></td>
+        <td><%= link_to 'Show', pooler %></td>
+        <td><%= link_to 'Edit', edit_pooler_path(pooler) %></td>
+        <td><%= link_to 'Destroy', pooler, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Pooler', new_pooler_path %>

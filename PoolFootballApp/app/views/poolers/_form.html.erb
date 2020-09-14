@@ -1,0 +1,52 @@
+<%= form_with(model: pooler, local: true) do |form| %>
+  <% if pooler.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(pooler.errors.count, "error") %> prohibited this pooler from being saved:</h2>
+
+      <ul>
+        <% pooler.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :email %>
+    <%= form.text_field :email %>
+  </div>
+
+  <div class="field">
+    <%= form.label :name %>
+    <%= form.text_field :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :favTeam %>
+    <%= form.text_field :favTeam %>
+  </div>
+
+  <div class="field">
+    <%= form.label :token %>
+    <%= form.text_field :token %>
+  </div>
+
+  <div class="field">
+    <%= form.label :refresh_token %>
+    <%= form.text_field :refresh_token %>
+  </div>
+
+  <div class="field">
+    <%= form.label :accessLevel %>
+    <%= form.text_field :accessLevel %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pool_id %>
+    <%= form.collection_select :pool_id, @pools, :id, :name %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
