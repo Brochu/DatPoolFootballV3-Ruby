@@ -12,11 +12,6 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :email %>
-    <%= form.text_field :email %>
-  </div>
-
-  <div class="field">
     <%= form.label :name %>
     <%= form.text_field :name %>
   </div>
@@ -27,23 +22,13 @@
   </div>
 
   <div class="field">
-    <%= form.label :token %>
-    <%= form.text_field :token %>
-  </div>
-
-  <div class="field">
-    <%= form.label :refresh_token %>
-    <%= form.text_field :refresh_token %>
-  </div>
-
-  <div class="field">
-    <%= form.label :accessLevel %>
-    <%= form.text_field :accessLevel %>
-  </div>
-
-  <div class="field">
     <%= form.label :pool_id %>
     <%= form.collection_select :pool_id, @pools, :id, :name %>
+  </div>
+
+  <div class="field">
+    <%= form.label :user_id %>
+    <!-- add in a hidden field with the currently logged in user's id -->
   </div>
 
   <div class="actions">

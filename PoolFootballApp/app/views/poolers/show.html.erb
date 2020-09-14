@@ -1,11 +1,6 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Email:</strong>
-  <%= @pooler.email %>
-</p>
-
-<p>
   <strong>Name:</strong>
   <%= @pooler.name %>
 </p>
@@ -16,23 +11,13 @@
 </p>
 
 <p>
-  <strong>Token:</strong>
-  <%= @pooler.token %>
-</p>
-
-<p>
-  <strong>Refresh token:</strong>
-  <%= @pooler.refresh_token %>
-</p>
-
-<p>
-  <strong>Accesslevel:</strong>
-  <%= @pooler.accessLevel %>
-</p>
-
-<p>
   <strong>Pool:</strong>
   <%= @pooler.pool_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @pooler.user_id %>
 </p>
 
 <%= link_to 'Edit', edit_pooler_path(@pooler) %> |
