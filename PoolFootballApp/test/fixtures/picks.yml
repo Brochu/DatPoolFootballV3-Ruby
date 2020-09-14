@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  season: 
+  week: 
+  pickstring: MyString
+  pooler: one
+  pool: one
+
+two:
+  season: 
+  week: 
+  pickstring: MyString
+  pooler: two
+  pool: two
