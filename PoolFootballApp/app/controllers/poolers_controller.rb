@@ -70,6 +70,6 @@ class PoolersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pooler_params
-      params.require(:pooler).permit(:name, :favTeam, :pool_id :user_id)
+      params.require(:pooler).permit(:name, :favTeam, :pool_id, :user_id)
     end
 end
