@@ -1378,3 +1378,542 @@ Processing by SessionsController#login as HTML
 Completed 200 OK in 2677ms (Views: 2629.7ms | MongoDB: 0.0ms | Allocations: 65824)
 
 
+Started GET "/" for ::1 at 2020-09-21 21:33:10 -0400
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 24.9ms | Allocations: 340)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 1167ms (Views: 1120.8ms | MongoDB: 0.0ms | Allocations: 24703)
+
+
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:33:15 -0400
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:33:15 -0400
+Started GET "/auth/google_oauth2/callback?state=3cf9e6de14843566f0083a56126205343f3600573be30204&code=4%2F4QHkUAs2SK7PHCs3EPm9-bU3a0k1KfY5h5TEOGFBst88f_bIkC8OnHRAiQDjEZH-s_TcvLmgnd4JNP4pBSRoriI&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2020-09-21 21:33:22 -0400
+Processing by SessionsController#omniauth as HTML
+  Parameters: {"state"=>"3cf9e6de14843566f0083a56126205343f3600573be30204", "code"=>"4/4QHkUAs2SK7PHCs3EPm9-bU3a0k1KfY5h5TEOGFBst88f_bIkC8OnHRAiQDjEZH-s_TcvLmgnd4JNP4pBSRoriI", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent", "provider"=>"google_oauth2"}
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server brochufootballpool-shard-00-00.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-01.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-02.twqub.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 5.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Waiting for up to 4.78 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0,v=1,e=7fffffff0000000000000004] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 SECONDARY replica_set=atlas-r5wspl-shard-0 pool=#<ConnectionPool size=0 (0-5) used=0 avail=0 pending=0>>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 PRIMARY replica_set=atlas-r5wspl-shard-0 pool=#<ConnectionPool size=0 (0-5) used=0 avail=0 pending=0>>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 conn:1:1 sconn:117253 | admin.saslStart | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 | admin.saslStart | SUCCEEDED | 0.038s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 conn:1:1 sconn:117253 | admin.saslContinue | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 | admin.saslContinue | SUCCEEDED | 0.037s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 conn:1:1 sconn:117253 | pool_football_app_dev.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"alexbrochu1@gmail.com"}, "sort"=>{"_id"=>1}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "lsid"=>{"id"=><BSON::Binary:0x73106080 type=uuid data=0xab07f3ca974c49b4...>}}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 | pool_football_app_dev.find | SUCCEEDED | 0.035s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 conn:1:1 sconn:117253 | pool_football_app_dev.find | STARTED | {"find"=>"poolers", "filter"=>{"user_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000bd5b6b8 @seconds=1600738403, @incremen...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 | pool_football_app_dev.find | SUCCEEDED | 0.041s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 conn:1:1 sconn:117253 | pool_football_app_dev.update | STARTED | {"update"=>"users", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "u"=>{"$set"=>{"token"=>"ya29.a0AfH6SMCtZx8VFkyoe18wa0ZQGuZg4k1jnLcGDyCU69MpsTVUFt4QhgXxdZ6d22npb5WRxFSonq5M...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 | pool_football_app_dev.update | SUCCEEDED | 0.042s
+Redirected to http://localhost:3000/pools
+Completed 302 Found in 981ms (MongoDB: 0.2ms | Allocations: 30101)
+
+
+Started GET "/pools" for ::1 at 2020-09-21 21:33:23 -0400
+Processing by PoolsController#index as HTML
+  Rendering pools/index.html.erb within layouts/application
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 conn:1:1 sconn:117253 | pool_football_app_dev.find | STARTED | {"find"=>"pools", "filter"=>{}, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000be76638 @seconds=1600738404, @increment=1>, "signature"=>{"hash"=><BSON::Binary:0x99857000 type=generic data=0x95c0063f05d46a0...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 | pool_football_app_dev.find | SUCCEEDED | 0.040s
+  Rendered pools/index.html.erb within layouts/application (Duration: 74.8ms | Allocations: 2355)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 162ms (Views: 135.1ms | MongoDB: 0.0ms | Allocations: 11402)
+
+
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:16 conn:1:2 sconn:117253 | admin.saslStart | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:16 | admin.saslStart | SUCCEEDED | 0.056s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:17 conn:1:2 sconn:117253 | admin.saslContinue | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:17 | admin.saslContinue | SUCCEEDED | 0.036s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:18 conn:1:2 sconn:117253 | admin.endSessions | STARTED | {"endSessions"=>[{"id"=><BSON::Binary:0x73106080 type=uuid data=0xab07f3ca974c49b4...>}], "$db"=>"admin", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000bf4f5f0 @seconds=1600738404, @increment=2>, "signature"=>{"hash"=><BSON::Binary:0x10...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:18 | admin.endSessions | SUCCEEDED | 0.063s
+Started GET "/" for ::1 at 2020-09-21 21:35:32 -0400
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 9.0ms | Allocations: 340)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 244ms (Views: 224.8ms | MongoDB: 0.0ms | Allocations: 24702)
+
+
+Started GET "/" for ::1 at 2020-09-21 21:35:33 -0400
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 0.2ms | Allocations: 20)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 59.8ms | MongoDB: 0.0ms | Allocations: 5455)
+
+
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:35:41 -0400
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:35:41 -0400
+Started GET "/auth/google_oauth2/callback?state=696154505cca262f8765775257ac456ddd4a6d46c2c502c4&code=4%2F4QEVtvvRzl65xzInlXVhtzzHdNDfKsowxL0XCpdTOCeDUn5Ur5ttIdSVLRLupSYyDjUigkB2v2VlaLsq-kPb5C4&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2020-09-21 21:35:51 -0400
+Processing by SessionsController#omniauth as HTML
+  Parameters: {"state"=>"696154505cca262f8765775257ac456ddd4a6d46c2c502c4", "code"=>"4/4QEVtvvRzl65xzInlXVhtzzHdNDfKsowxL0XCpdTOCeDUn5Ur5ttIdSVLRLupSYyDjUigkB2v2VlaLsq-kPb5C4", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent", "provider"=>"google_oauth2"}
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server brochufootballpool-shard-00-00.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-01.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-02.twqub.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 5.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 4.75 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0,v=1,e=7fffffff0000000000000004] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 PRIMARY replica_set=atlas-r5wspl-shard-0 pool=#<ConnectionPool size=0 (0-5) used=0 avail=0 pending=0>>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 conn:1:1 sconn:113531 | admin.saslStart | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 | admin.saslStart | SUCCEEDED | 0.037s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 conn:1:1 sconn:113531 | admin.saslContinue | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 | admin.saslContinue | SUCCEEDED | 0.041s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 conn:1:1 sconn:113531 | pool_football_app_dev.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"alexbrochu1@gmail.com"}, "sort"=>{"_id"=>1}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "lsid"=>{"id"=><BSON::Binary:0x72768800 type=uuid data=0x9f6d216d89784bc8...>}}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 | pool_football_app_dev.find | SUCCEEDED | 0.045s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 conn:1:1 sconn:113531 | pool_football_app_dev.find | STARTED | {"find"=>"poolers", "filter"=>{"user_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000bc167d0 @seconds=1600738550, @incremen...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 | pool_football_app_dev.find | SUCCEEDED | 0.032s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 conn:1:1 sconn:113531 | pool_football_app_dev.update | STARTED | {"update"=>"users", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "u"=>{"$set"=>{"token"=>"ya29.a0AfH6SMBbHeSJcQM9HqKNYcgFhv-uI16YplnXXS7Oit7wM1GfXz3anbz2JtnniA27yKlR3nHmwL3E...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 | pool_football_app_dev.update | SUCCEEDED | 0.053s
+Redirected to http://localhost:3000/pools
+Completed 302 Found in 876ms (MongoDB: 0.2ms | Allocations: 30048)
+
+
+Started GET "/pools" for ::1 at 2020-09-21 21:35:53 -0400
+Processing by PoolsController#index as HTML
+  Rendering pools/index.html.erb within layouts/application
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 conn:1:1 sconn:113531 | pool_football_app_dev.find | STARTED | {"find"=>"pools", "filter"=>{}, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000bd8d5c8 @seconds=1600738553, @increment=1>, "signature"=>{"hash"=><BSON::Binary:0x99379780 type=generic data=0x9a226411b347c70...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 | pool_football_app_dev.find | SUCCEEDED | 0.046s
+  Rendered pools/index.html.erb within layouts/application (Duration: 55.6ms | Allocations: 2350)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 135ms (Views: 121.4ms | MongoDB: 0.0ms | Allocations: 11393)
+
+
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/" for ::1 at 2020-09-21 21:47:59 -0400
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 5.3ms | Allocations: 341)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 276ms (Views: 243.6ms | MongoDB: 0.0ms | Allocations: 24699)
+
+
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:48:04 -0400
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:48:04 -0400
+Started GET "/auth/google_oauth2/callback?state=5fc40a080a31c30e2774a69b226e0a56fd79e7dc99b0e0bd&code=4%2F4QHXj4EOpCrROCq2q4aBauSQEqKOK_TN8JM86FMm82P1Yo2G8GpHX2o26RooQ2g_GHVC58WOmYOgl2rxBAHFIeY&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2020-09-21 21:48:08 -0400
+Processing by SessionsController#omniauth as HTML
+  Parameters: {"state"=>"5fc40a080a31c30e2774a69b226e0a56fd79e7dc99b0e0bd", "code"=>"4/4QHXj4EOpCrROCq2q4aBauSQEqKOK_TN8JM86FMm82P1Yo2G8GpHX2o26RooQ2g_GHVC58WOmYOgl2rxBAHFIeY", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent", "provider"=>"google_oauth2"}
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server brochufootballpool-shard-00-00.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-01.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-02.twqub.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 5.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 4.75 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0,v=1,e=7fffffff0000000000000004] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 PRIMARY replica_set=atlas-r5wspl-shard-0 pool=#<ConnectionPool size=0 (0-5) used=0 avail=0 pending=0>>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 conn:1:1 sconn:117253 | admin.saslStart | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 | admin.saslStart | SUCCEEDED | 0.037s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 conn:1:1 sconn:117253 | admin.saslContinue | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 | admin.saslContinue | SUCCEEDED | 0.030s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 conn:1:1 sconn:117253 | pool_football_app_dev.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"alexbrochu1@gmail.com"}, "sort"=>{"_id"=>1}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "lsid"=>{"id"=><BSON::Binary:0x62058880 type=uuid data=0x93f9fb391f614933...>}}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 | pool_football_app_dev.find | SUCCEEDED | 0.035s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 conn:1:1 sconn:117253 | pool_football_app_dev.find | STARTED | {"find"=>"poolers", "filter"=>{"user_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000960a898 @seconds=1600739289, @incremen...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 | pool_football_app_dev.find | SUCCEEDED | 0.044s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 conn:1:1 sconn:117253 | pool_football_app_dev.update | STARTED | {"update"=>"users", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "u"=>{"$set"=>{"token"=>"ya29.a0AfH6SMC5kyAT0PKY88W_52pjbMeMLS9tx3Roav2X67MS5V5Viwxkiu0iD6mTpB8SqtM0yTZbG4On...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 | pool_football_app_dev.update | SUCCEEDED | 0.072s
+Redirected to http://localhost:3000/pools
+Completed 302 Found in 859ms (MongoDB: 0.2ms | Allocations: 30048)
+
+
+Started GET "/pools" for ::1 at 2020-09-21 21:48:09 -0400
+Processing by PoolsController#index as HTML
+  Rendering pools/index.html.erb within layouts/application
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 conn:1:1 sconn:117253 | pool_football_app_dev.find | STARTED | {"find"=>"pools", "filter"=>{}, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000bd939c8 @seconds=1600739289, @increment=2>, "signature"=>{"hash"=><BSON::Binary:0x99392580 type=generic data=0xdc7fbbed43d6729...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 | pool_football_app_dev.find | SUCCEEDED | 0.035s
+  Rendered pools/index.html.erb within layouts/application (Duration: 45.5ms | Allocations: 2350)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 126ms (Views: 112.7ms | MongoDB: 0.0ms | Allocations: 11398)
+
+
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/logout" for ::1 at 2020-09-21 21:48:19 -0400
+Processing by SessionsController#goodbye as HTML
+Completed 500 Internal Server Error in 104ms (MongoDB: 0.0ms | Allocations: 35128)
+
+
+  
+NoMethodError (undefined method `to' for #<SessionsController:0x000000000bf83e90>
+Did you mean?  t):
+  
+app/controllers/sessions_controller.rb:7:in `goodbye'
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/" for ::1 at 2020-09-21 21:50:25 -0400
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 9.5ms | Allocations: 340)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 316ms (Views: 285.2ms | MongoDB: 0.0ms | Allocations: 24693)
+
+
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:50:30 -0400
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:50:30 -0400
+Started GET "/auth/google_oauth2/callback?state=70b8f09dd964b982e58b5a14c0457d89be910f69b43a04ee&code=4%2F4QGdKd4aAU6mJERnI4D5T8TAn2CkXBNOjkwJNtB9NHtvZwhv1mLlrOxBGCzZvfJx-YtIt9DrDuYyZhLjssN9uUM&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2020-09-21 21:50:33 -0400
+Processing by SessionsController#omniauth as HTML
+  Parameters: {"state"=>"70b8f09dd964b982e58b5a14c0457d89be910f69b43a04ee", "code"=>"4/4QGdKd4aAU6mJERnI4D5T8TAn2CkXBNOjkwJNtB9NHtvZwhv1mLlrOxBGCzZvfJx-YtIt9DrDuYyZhLjssN9uUM", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent", "provider"=>"google_oauth2"}
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server brochufootballpool-shard-00-00.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-01.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-02.twqub.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 5.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 4.81 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0,v=1,e=7fffffff0000000000000004] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 PRIMARY replica_set=atlas-r5wspl-shard-0 pool=#<ConnectionPool size=0 (0-5) used=0 avail=0 pending=0>>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 conn:1:1 sconn:116171 | admin.saslStart | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 | admin.saslStart | SUCCEEDED | 0.050s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 conn:1:1 sconn:116171 | admin.saslContinue | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 | admin.saslContinue | SUCCEEDED | 0.037s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 conn:1:1 sconn:116171 | pool_football_app_dev.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"alexbrochu1@gmail.com"}, "sort"=>{"_id"=>1}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "lsid"=>{"id"=><BSON::Binary:0x62082920 type=uuid data=0x720df16f69ed46cf...>}}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 | pool_football_app_dev.find | SUCCEEDED | 0.034s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 conn:1:1 sconn:116171 | pool_football_app_dev.find | STARTED | {"find"=>"poolers", "filter"=>{"user_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x00000000089576f0 @seconds=1600739434, @incremen...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 | pool_football_app_dev.find | SUCCEEDED | 0.037s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 conn:1:1 sconn:116171 | pool_football_app_dev.update | STARTED | {"update"=>"users", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "u"=>{"$set"=>{"token"=>"ya29.a0AfH6SMAA3dpp4K6-ZCURmf8JkCgurJ7B2neIBNMr3SbTHMmu5VC5Atab5fce1iW4FHsr-xXmqMRH...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 | pool_football_app_dev.update | SUCCEEDED | 0.059s
+Redirected to http://localhost:3000/pools
+Completed 302 Found in 847ms (MongoDB: 0.2ms | Allocations: 30053)
+
+
+Started GET "/pools" for ::1 at 2020-09-21 21:50:35 -0400
+Processing by PoolsController#index as HTML
+  Rendering pools/index.html.erb within layouts/application
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 conn:1:1 sconn:116171 | pool_football_app_dev.find | STARTED | {"find"=>"pools", "filter"=>{}, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000bd2b558 @seconds=1600739435, @increment=1>, "signature"=>{"hash"=><BSON::Binary:0x99179020 type=generic data=0x6c53f7ce9da3df2...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 | pool_football_app_dev.find | SUCCEEDED | 0.034s
+  Rendered pools/index.html.erb within layouts/application (Duration: 40.4ms | Allocations: 2350)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 114ms (Views: 101.5ms | MongoDB: 0.0ms | Allocations: 11383)
+
+
+Started GET "/sessions/goodbye" for ::1 at 2020-09-21 21:50:44 -0400
+Processing by SessionsController#goodbye as HTML
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Completed 500 Internal Server Error in 235ms (MongoDB: 0.0ms | Allocations: 69259)
+
+
+  
+NameError (undefined local variable or method `root_path' for #<SessionsController:0x000000000bf16f48>
+Did you mean?  pool_path):
+  
+app/controllers/sessions_controller.rb:7:in `goodbye'
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/sessions/goodbye" for ::1 at 2020-09-21 21:51:00 -0400
+Processing by SessionsController#goodbye as HTML
+Completed 500 Internal Server Error in 149ms (MongoDB: 0.0ms | Allocations: 67720)
+
+
+  
+NameError (undefined local variable or method `root_path' for #<SessionsController:0x000000000ead22b8>
+Did you mean?  pool_path):
+  
+app/controllers/sessions_controller.rb:7:in `goodbye'
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/" for ::1 at 2020-09-21 21:52:22 -0400
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 0.2ms | Allocations: 19)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 61ms (Views: 60.0ms | MongoDB: 0.0ms | Allocations: 5648)
+
+
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/" for ::1 at 2020-09-21 21:53:23 -0400
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 5.2ms | Allocations: 340)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 287ms (Views: 268.0ms | MongoDB: 0.0ms | Allocations: 24693)
+
+
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:53:26 -0400
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:53:26 -0400
+Started GET "/auth/google_oauth2/callback?state=b78436166fb251a73e619f9de669db79ba3b579b2f5ff15b&code=4%2F4QEf5kENdigAEFlS9efdaj0KnQl-Y2_IcmI_ogrIU9LJYQtunQiz4zTDiyExCdU5ACvdDwZ54StACCMCnzz-EoM&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2020-09-21 21:53:29 -0400
+Processing by SessionsController#omniauth as HTML
+  Parameters: {"state"=>"b78436166fb251a73e619f9de669db79ba3b579b2f5ff15b", "code"=>"4/4QEf5kENdigAEFlS9efdaj0KnQl-Y2_IcmI_ogrIU9LJYQtunQiz4zTDiyExCdU5ACvdDwZ54StACCMCnzz-EoM", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent", "provider"=>"google_oauth2"}
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server brochufootballpool-shard-00-00.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-01.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-02.twqub.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 5.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 4.84 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0,v=1,e=7fffffff0000000000000004] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 PRIMARY replica_set=atlas-r5wspl-shard-0 pool=#<ConnectionPool size=0 (0-5) used=0 avail=0 pending=0>>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Waiting for up to 4.80 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0,v=1,e=7fffffff0000000000000004] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 SECONDARY replica_set=atlas-r5wspl-shard-0 pool=#<ConnectionPool size=0 (0-5) used=0 avail=0 pending=0>>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 PRIMARY replica_set=atlas-r5wspl-shard-0 pool=#<ConnectionPool size=0 (0-5) used=0 avail=0 pending=0>>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 conn:1:1 sconn:119580 | admin.saslStart | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 | admin.saslStart | SUCCEEDED | 0.037s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 conn:1:1 sconn:119580 | admin.saslContinue | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 | admin.saslContinue | SUCCEEDED | 0.038s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 conn:1:1 sconn:119580 | pool_football_app_dev.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"alexbrochu1@gmail.com"}, "sort"=>{"_id"=>1}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "lsid"=>{"id"=><BSON::Binary:0x72779720 type=uuid data=0x45d58292a7db42ec...>}}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 | pool_football_app_dev.find | SUCCEEDED | 0.037s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 conn:1:1 sconn:119580 | pool_football_app_dev.find | STARTED | {"find"=>"poolers", "filter"=>{"user_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000960c8a0 @seconds=1600739610, @incremen...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 | pool_football_app_dev.find | SUCCEEDED | 0.043s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 conn:1:1 sconn:119580 | pool_football_app_dev.update | STARTED | {"update"=>"users", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "u"=>{"$set"=>{"token"=>"ya29.a0AfH6SMBNxlTzyziCznJisiGKAU3y_g-PSy61l08ot-wkgTx5WZjwJ6B9cNtn9BCfnJb6lVsCANVg...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 | pool_football_app_dev.update | SUCCEEDED | 0.041s
+Redirected to http://localhost:3000/pools
+Completed 302 Found in 826ms (MongoDB: 0.2ms | Allocations: 30216)
+
+
+Started GET "/pools" for ::1 at 2020-09-21 21:53:30 -0400
+Processing by PoolsController#index as HTML
+  Rendering pools/index.html.erb within layouts/application
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 conn:1:1 sconn:119580 | pool_football_app_dev.find | STARTED | {"find"=>"pools", "filter"=>{}, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000bd9ef80 @seconds=1600739611, @increment=1>, "signature"=>{"hash"=><BSON::Binary:0x99415840 type=generic data=0x64041d71c62802a...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 | pool_football_app_dev.find | SUCCEEDED | 0.038s
+  Rendered pools/index.html.erb within layouts/application (Duration: 47.5ms | Allocations: 2350)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 144ms (Views: 130.2ms | MongoDB: 0.0ms | Allocations: 11385)
+
+
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/sessions/goodbye" for ::1 at 2020-09-21 21:53:47 -0400
+Processing by SessionsController#goodbye as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 4ms (MongoDB: 0.0ms | Allocations: 785)
+
+
+Started GET "/" for ::1 at 2020-09-21 21:53:47 -0400
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 0.2ms | Allocations: 20)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 64ms (Views: 63.6ms | MongoDB: 0.0ms | Allocations: 5446)
+
+
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+Started GET "/" for ::1 at 2020-09-21 21:55:19 -0400
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 4.5ms | Allocations: 340)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 256ms (Views: 237.0ms | MongoDB: 0.0ms | Allocations: 24685)
+
+
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:55:22 -0400
+Started GET "/auth/google_oauth2" for ::1 at 2020-09-21 21:55:22 -0400
+Started GET "/auth/google_oauth2/callback?state=5f5c9ab47fe764bc7dd41dee5fed507d3dc124e9ca78e2c8&code=4%2F4QHnMGc7mvKpTiYASxQK-qyTY8aw9cCFlrf6r1B8aYN20FuLe6u8Nrfedx-ReUk1b27oJeA2COZkTRS5q-LfTMY&scope=email+profile+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.email+https%3A%2F%2Fwww.googleapis.com%2Fauth%2Fuserinfo.profile+openid&authuser=0&prompt=consent" for ::1 at 2020-09-21 21:55:29 -0400
+Processing by SessionsController#omniauth as HTML
+  Parameters: {"state"=>"5f5c9ab47fe764bc7dd41dee5fed507d3dc124e9ca78e2c8", "code"=>"4/4QHnMGc7mvKpTiYASxQK-qyTY8aw9cCFlrf6r1B8aYN20FuLe6u8Nrfedx-ReUk1b27oJeA2COZkTRS5q-LfTMY", "scope"=>"email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/userinfo.profile openid", "authuser"=>"0", "prompt"=>"consent", "provider"=>"google_oauth2"}
+MONGODB | Topology type 'unknown' initializing.
+MONGODB | Topology type 'Unknown' changed to type 'ReplicaSetNoPrimary'.
+MONGODB | Server brochufootballpool-shard-00-00.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-01.twqub.mongodb.net:27017 initializing.
+MONGODB | Server brochufootballpool-shard-00-02.twqub.mongodb.net:27017 initializing.
+MONGODB | Waiting for up to 5.00 seconds for servers to be scanned: #<Cluster topology=ReplicaSetNoPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'unknown' to 'primary'.
+MONGODB | Topology type 'ReplicaSetNoPrimary' changed to type 'ReplicaSetWithPrimary'.
+MONGODB | Waiting for up to 4.77 seconds for servers to be scanned: #<Cluster topology=ReplicaSetWithPrimary[brochufootballpool-shard-00-00.twqub.mongodb.net:27017,brochufootballpool-shard-00-01.twqub.mongodb.net:27017,brochufootballpool-shard-00-02.twqub.mongodb.net:27017,name=atlas-r5wspl-shard-0,v=1,e=7fffffff0000000000000004] servers=[#<Server address=brochufootballpool-shard-00-00.twqub.mongodb.net:27017 UNKNOWN>,#<Server address=brochufootballpool-shard-00-01.twqub.mongodb.net:27017 PRIMARY replica_set=atlas-r5wspl-shard-0 pool=#<ConnectionPool size=0 (0-5) used=0 avail=0 pending=0>>,#<Server address=brochufootballpool-shard-00-02.twqub.mongodb.net:27017 UNKNOWN>]>
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'unknown' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 conn:1:1 sconn:117255 | admin.saslStart | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:9 | admin.saslStart | SUCCEEDED | 0.039s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 conn:1:1 sconn:117255 | admin.saslContinue | STARTED | {}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:10 | admin.saslContinue | SUCCEEDED | 0.048s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 conn:1:1 sconn:117255 | pool_football_app_dev.find | STARTED | {"find"=>"users", "filter"=>{"email"=>"alexbrochu1@gmail.com"}, "sort"=>{"_id"=>1}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "lsid"=>{"id"=><BSON::Binary:0x72471520 type=uuid data=0xb0b929804cf54186...>}}
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:11 | pool_football_app_dev.find | SUCCEEDED | 0.034s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 conn:1:1 sconn:117255 | pool_football_app_dev.find | STARTED | {"find"=>"poolers", "filter"=>{"user_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "limit"=>1, "singleBatch"=>true, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000bb8ec40 @seconds=1600739730, @incremen...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:12 | pool_football_app_dev.find | SUCCEEDED | 0.032s
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 conn:1:1 sconn:117255 | pool_football_app_dev.update | STARTED | {"update"=>"users", "ordered"=>true, "writeConcern"=>{"w"=>"majority"}, "updates"=>[{"q"=>{"_id"=>BSON::ObjectId('5f64301fd8e2db0cc0c47ac6')}, "u"=>{"$set"=>{"token"=>"ya29.a0AfH6SMA8JAdvimHfPpBTXu2JC8XSzZfbWUneowuq3xmIw4domCMbguwgzeQc4XBwD1HURJGZ8YLl...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:13 | pool_football_app_dev.update | SUCCEEDED | 0.051s
+Redirected to http://localhost:3000/pools
+Completed 302 Found in 843ms (MongoDB: 0.2ms | Allocations: 30089)
+
+
+Started GET "/pools" for ::1 at 2020-09-21 21:55:30 -0400
+Processing by PoolsController#index as HTML
+  Rendering pools/index.html.erb within layouts/application
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 conn:1:1 sconn:117255 | pool_football_app_dev.find | STARTED | {"find"=>"pools", "filter"=>{}, "$db"=>"pool_football_app_dev", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000bcb8fa8 @seconds=1600739731, @increment=1>, "signature"=>{"hash"=><BSON::Binary:0x98944820 type=generic data=0xc5732611c95ea97...
+MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:14 | pool_football_app_dev.find | SUCCEEDED | 0.040s
+  Rendered pools/index.html.erb within layouts/application (Duration: 53.5ms | Allocations: 2355)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 126ms (Views: 117.7ms | MongoDB: 0.0ms | Allocations: 11417)
+
+
+Started GET "/sessions/goodbye" for ::1 at 2020-09-21 21:55:37 -0400
+Processing by SessionsController#goodbye as HTML
+Redirected to http://localhost:3000/
+Completed 302 Found in 5ms (MongoDB: 0.0ms | Allocations: 766)
+
+
+Started GET "/" for ::1 at 2020-09-21 21:55:37 -0400
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 0.3ms | Allocations: 20)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 94ms (Views: 92.0ms | MongoDB: 0.0ms | Allocations: 5438)
+
+
+MONGODB | Server description for brochufootballpool-shard-00-02.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-00.twqub.mongodb.net:27017 changed from 'secondary' to 'secondary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.
+MONGODB | Server description for brochufootballpool-shard-00-01.twqub.mongodb.net:27017 changed from 'primary' to 'primary'.
+MONGODB | There was a change in the members of the 'ReplicaSetWithPrimary' topology.

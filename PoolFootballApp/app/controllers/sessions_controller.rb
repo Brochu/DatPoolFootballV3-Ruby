@@ -1,4 +1,12 @@
 class SessionsController < ApplicationController
+  def login
+  end
+
+  def goodbye
+    reset_session
+    redirect_to :action => "login"
+  end
+
   def omniauth
     # Get access tokens from the google server
     access_token = request.env["omniauth.auth"]
@@ -10,10 +18,7 @@ class SessionsController < ApplicationController
     refresh_token = access_token.credentials.refresh_token
     @user.refreshtoken = refresh_token if refresh_token.present?
     @user.save
-    session[:userId] = @user.id;
+    session[:userId] = @user.id
     redirect_to pools_path
-  end
-
-  def login
   end
 end
