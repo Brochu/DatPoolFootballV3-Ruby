@@ -1370,3 +1370,11 @@ MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:19 conn:1:2
 MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:19 | admin.saslContinue | SUCCEEDED | 0.044s
 MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:20 conn:1:2 sconn:7238 | admin.endSessions | STARTED | {"endSessions"=>[{"id"=><BSON::Binary:0x72559560 type=uuid data=0x0203b4bc02984fe3...>}], "$db"=>"admin", "$clusterTime"=>{"clusterTime"=>#<BSON::Timestamp:0x000000000e53c4e8 @seconds=1600064161, @increment=2>, "signature"=>{"hash"=><BSON::Binary:0x12...
 MONGODB | brochufootballpool-shard-00-01.twqub.mongodb.net:27017 req:20 | admin.endSessions | SUCCEEDED | 0.044s
+Started GET "/" for ::1 at 2020-09-19 00:56:22 -0400
+Processing by SessionsController#login as HTML
+  Rendering sessions/login.html.erb within layouts/application
+  Rendered sessions/login.html.erb within layouts/application (Duration: 31.1ms | Allocations: 340)
+[Webpacker] Everything's up-to-date. Nothing to do
+Completed 200 OK in 2677ms (Views: 2629.7ms | MongoDB: 0.0ms | Allocations: 65824)
+
+
