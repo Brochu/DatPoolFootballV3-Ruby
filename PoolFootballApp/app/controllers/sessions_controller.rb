@@ -1,5 +1,11 @@
 class SessionsController < ApplicationController
   def login
+    if (session.key?(:user_token))
+      @user = User.where(token: session[:user_token]).first
+      @pooler = Pooler.where(user_id: @user.id).first
+
+      redirect_to_home(@user, @pooler)
+    end
   end
 
   def goodbye
@@ -8,17 +14,36 @@ class SessionsController < ApplicationController
   end
 
   def omniauth
-    # Get access tokens from the google server
     access_token = request.env["omniauth.auth"]
+
+    # Attempt to find user or setup a new user if needed
+    # Save tokens we got from the auth service
     @user = User.from_omniauth(access_token)
-    # Access_token is used to authenticate request made from the rails application to the google server
     @user.token = access_token.credentials.token
-    # Refresh_token to request new access_token
-    # Note: Refresh_token is only sent once during the first request
     refresh_token = access_token.credentials.refresh_token
     @user.refreshtoken = refresh_token if refresh_token.present?
     @user.save
-    session[:userId] = @user.id
-    redirect_to pools_path
+
+    set_user_info(@user)
+  end
+
+  private
+
+  def set_user_info(user)
+    # Try to find pooler related to this user
+    # If we can't find one, redirect to new pooler page
+    session[:user_token] = @user.token
+    @pooler = Pooler.where(user_id: @user.id).documents[0]
+
+    redirect_to_home(user, @pooler)
+  end
+
+  def redirect_to_home(user, pooler)
+    if (@pooler != nil)
+      session[:current_pooler] = @pooler
+      redirect_to pools_path
+    else
+      redirect_to new_pooler_path
+    end
   end
 end
