@@ -3,9 +3,9 @@ class PoolersController < ApplicationController
 
   # GET /poolers
   # GET /poolers.json
-  def index
-    @poolers = Pooler.all
-  end
+  #def index
+  #  @poolers = Pooler.all
+  #end
 
   # GET /poolers/1
   # GET /poolers/1.json
@@ -15,7 +15,6 @@ class PoolersController < ApplicationController
   # GET /poolers/new
   def new
     @pooler = Pooler.new
-    @pools = Pool.all
   end
 
   # GET /poolers/1/edit
@@ -26,6 +25,10 @@ class PoolersController < ApplicationController
   # POST /poolers.json
   def create
     @pooler = Pooler.new(pooler_params)
+
+    @user = User.where(token: session[:user_token]).first
+    @pooler.pool_id = BSON::ObjectId.new
+    @pooler.user_id = @user.id
 
     respond_to do |format|
       if @pooler.save
@@ -54,13 +57,13 @@ class PoolersController < ApplicationController
 
   # DELETE /poolers/1
   # DELETE /poolers/1.json
-  def destroy
-    @pooler.destroy
-    respond_to do |format|
-      format.html { redirect_to poolers_url, notice: 'Pooler was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
+  #def destroy
+  #  @pooler.destroy
+  #  respond_to do |format|
+  #    format.html { redirect_to poolers_url, notice: 'Pooler was successfully destroyed.' }
+  #    format.json { head :no_content }
+  #  end
+  #end
 
   private
     # Use callbacks to share common setup or constraints between actions.
@@ -70,6 +73,6 @@ class PoolersController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pooler_params
-      params.require(:pooler).permit(:name, :favTeam, :pool_id, :user_id)
+      params.require(:pooler).permit(:name, :favTeam)
     end
 end

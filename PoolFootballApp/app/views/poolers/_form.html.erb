@@ -21,16 +21,6 @@
     <%= form.text_field :favTeam %>
   </div>
 
-  <div class="field">
-    <%= form.label :pool_id %>
-    <%= form.collection_select :pool_id, @pools, :id, :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :user_id %>
-    <!-- add in a hidden field with the currently logged in user's id -->
-  </div>
-
   <div class="actions">
     <%= form.submit %>
   </div>

@@ -16,5 +16,5 @@ Rails.application.routes.draw do
 
   # Client facing resources
   resources :pools, only: [:index]
-  resources :poolers, only: [:new, :create]
+  resources :poolers, only: [:new, :create, :show, :edit, :update]
 end

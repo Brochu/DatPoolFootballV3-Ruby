@@ -33,7 +33,7 @@ class SessionsController < ApplicationController
     # Try to find pooler related to this user
     # If we can't find one, redirect to new pooler page
     session[:user_token] = @user.token
-    @pooler = Pooler.where(user_id: @user.id).documents[0]
+    @pooler = Pooler.where(user_id: @user.id).first
 
     redirect_to_home(user, @pooler)
   end
