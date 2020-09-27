@@ -15,6 +15,7 @@ class PoolersController < ApplicationController
   # GET /poolers/new
   def new
     @pooler = Pooler.new
+    @teams = get_teams
   end
 
   # GET /poolers/1/edit
@@ -24,21 +25,22 @@ class PoolersController < ApplicationController
   # POST /poolers
   # POST /poolers.json
   def create
-    @pooler = Pooler.new(pooler_params)
+    puts "------>#{pooler_params}"
+    # @pooler = Pooler.new(pooler_params)
 
-    @user = User.where(token: session[:user_token]).first
-    @pooler.pool_id = BSON::ObjectId.new
-    @pooler.user_id = @user.id
+    # @user = User.where(token: session[:user_token]).first
+    # @pooler.pool_id = BSON::ObjectId.new
+    # @pooler.user_id = @user.id
 
-    respond_to do |format|
-      if @pooler.save
-        format.html { redirect_to @pooler, notice: 'Pooler was successfully created.' }
-        format.json { render :show, status: :created, location: @pooler }
-      else
-        format.html { render :new }
-        format.json { render json: @pooler.errors, status: :unprocessable_entity }
-      end
-    end
+    # respond_to do |format|
+    #   if @pooler.save
+    #     format.html { redirect_to @pooler, notice: 'Pooler was successfully created.' }
+    #     format.json { render :show, status: :created, location: @pooler }
+    #   else
+    #     format.html { render :new }
+    #     format.json { render json: @pooler.errors, status: :unprocessable_entity }
+    #   end
+    # end
   end
 
   # PATCH/PUT /poolers/1
@@ -74,5 +76,12 @@ class PoolersController < ApplicationController
     # Only allow a list of trusted parameters through.
     def pooler_params
       params.require(:pooler).permit(:name, :favTeam)
+    end
+
+    def get_teams
+      return [ "ARI", "ATL", "BAL", "BUF", "CAR", "CHI", "CIN", "CLE", "DAL",
+        "DEN", "DET", "GB", "HOU", "IND", "JAX", "KC", "LA", "LAC",
+        "MIA", "MIN", "NE", "NO", "NYG", "NYJ", "OAK", "PHI", "PIT",
+        "SEA", "SF", "TB", "TEN", "WAS" ];
     end
 end

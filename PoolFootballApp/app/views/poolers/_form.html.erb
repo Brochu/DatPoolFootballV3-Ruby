@@ -1,3 +1,17 @@
+<script>
+  function setFavTeam(favTeam, imgSrc)
+  {
+    var favTeamHidden = document.getElementById("pooler_favTeam");
+    favTeamHidden.value = favTeam;
+
+    var currentTeam = document.getElementById("currentTeamName");
+    currentTeam.innerHTML = favTeam;
+
+    var currentImg = document.getElementById("currentTeamImg");
+    currentImg.src = imgSrc;
+  }
+</script>
+
 <%= form_with(model: pooler, local: true) do |form| %>
   <% if pooler.errors.any? %>
     <div id="error_explanation">
@@ -16,10 +30,22 @@
     <%= form.text_field :name %>
   </div>
 
-  <div class="field">
-    <%= form.label :favTeam %>
-    <%= form.text_field :favTeam %>
+  <div class="dropdown">
+    <button class="btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+      <%= image_tag("ARI.png", size: "21", id: "currentTeamImg") %>
+      <label id="currentTeamName">ARI</label>
+    </button>
+    <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
+    <% @teams.each do |t| %>
+      <button class="dropdown-item" type="button" onclick="setFavTeam('<%= t %>', '<%= image_path(t + '.png') %>')">
+        <%= image_tag("#{t}.png", size: "21") %>
+        <%= t %>
+      </button>
+    <% end %>
+    </div>
   </div>
+
+  <%= form.hidden_field(:favTeam, value: "ARI") %>
 
   <div class="actions">
     <%= form.submit %>
