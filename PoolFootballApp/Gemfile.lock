@@ -142,10 +142,11 @@ GEM
     omniauth-oauth2 (1.7.0)
       oauth2 (~> 1.4)
       omniauth (~> 1.9)
+    passenger (6.0.6)
+      rack
+      rake (>= 0.8.1)
     popper_js (1.16.0)
     public_suffix (4.0.6)
-    puma (4.3.6)
-      nio4r (~> 2.0)
     rack (2.2.3)
     rack-proxy (0.6.5)
       rack
@@ -244,7 +245,7 @@ DEPENDENCIES
   mongoid (~> 7.0.5)
   omniauth
   omniauth-google-oauth2
-  puma (~> 4.1)
+  passenger
   rails (~> 6.0.3, >= 6.0.3.3)
   sass-rails (>= 6)
   selenium-webdriver
