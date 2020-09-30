@@ -1,0 +1,78 @@
+[ N 2020-09-29 01:59:01.3466 14830/T1 age/Wat/WatchdogMain.cpp:1373 ]: Starting Passenger watchdog...
+[ N 2020-09-29 01:59:01.3648 14833/T1 age/Cor/CoreMain.cpp:1340 ]: Starting Passenger core...
+[ N 2020-09-29 01:59:01.3649 14833/T1 age/Cor/CoreMain.cpp:256 ]: Passenger core running in multi-application mode.
+[ W 2020-09-29 01:59:01.3963 14833/T1 age/Cor/CoreMain.cpp:1007 ]: WARNING: potential privilege escalation vulnerability detected. Phusion Passenger is running as root, and part(s) of the Passenger root path (/var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6) can be changed by non-root user(s):
+
+ - /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6 is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0 is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp/vendor/bundle is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp/vendor is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool is not secure: it can be modified by user footpoolapp
+
+Please either fix up the permissions for the insecure paths, or install Passenger in a different location that can only be modified by root.
+[ N 2020-09-29 01:59:01.3963 14833/T1 age/Cor/CoreMain.cpp:1015 ]: Passenger core online, PID 14833
+2020/09/29 01:59:03 [error] 14853#0: *4 "/var/www/footpool/code/PoolFootballApp/config/public/index.html" is not found (2: No such file or directory), client: 127.0.0.1, server: _, request: "HEAD / HTTP/1.1", host: "0.0.0.0"
+[ N 2020-09-29 01:59:03.9947 14833/T5 age/Cor/SecurityUpdateChecker.h:519 ]: Security update check: no update found (next check in 24 hours)
+
+[ N 2020-09-29 01:59:17.1221 14833/T8 age/Cor/CoreMain.cpp:671 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2020-09-29 01:59:17.1222 14833/T1 age/Cor/CoreMain.cpp:1246 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2020-09-29 01:59:17.1223 14833/Ta Ser/Server.h:902 ]: [ServerThr.2] Freed 0 spare client objects
+[ N 2020-09-29 01:59:17.1223 14833/T8 Ser/Server.h:902 ]: [ServerThr.1] Freed 0 spare client objects
+[ N 2020-09-29 01:59:17.1223 14833/Ta Ser/Server.h:558 ]: [ServerThr.2] Shutdown finished
+[ N 2020-09-29 01:59:17.1223 14833/T8 Ser/Server.h:558 ]: [ServerThr.1] Shutdown finished
+[ N 2020-09-29 01:59:17.1224 14833/Td Ser/Server.h:902 ]: [ServerThr.3] Freed 0 spare client objects
+[ N 2020-09-29 01:59:17.1224 14833/Td Ser/Server.h:558 ]: [ServerThr.3] Shutdown finished
+[ N 2020-09-29 01:59:17.1224 14833/Tf Ser/Server.h:902 ]: [ServerThr.4] Freed 0 spare client objects
+[ N 2020-09-29 01:59:17.1225 14833/Tf Ser/Server.h:558 ]: [ServerThr.4] Shutdown finished
+[ N 2020-09-29 01:59:17.1225 14833/Th Ser/Server.h:902 ]: [ApiServer] Freed 0 spare client objects
+[ N 2020-09-29 01:59:17.1226 14833/Th Ser/Server.h:558 ]: [ApiServer] Shutdown finished
+[ N 2020-09-29 01:59:17.7228 14833/T1 age/Cor/CoreMain.cpp:1325 ]: Passenger core shutdown finished
+[ N 2020-09-29 01:59:19.2313 14904/T1 age/Wat/WatchdogMain.cpp:1373 ]: Starting Passenger watchdog...
+[ N 2020-09-29 01:59:19.2564 14907/T1 age/Cor/CoreMain.cpp:1340 ]: Starting Passenger core...
+[ N 2020-09-29 01:59:19.2565 14907/T1 age/Cor/CoreMain.cpp:256 ]: Passenger core running in multi-application mode.
+[ W 2020-09-29 01:59:19.2926 14907/T1 age/Cor/CoreMain.cpp:1007 ]: WARNING: potential privilege escalation vulnerability detected. Phusion Passenger is running as root, and part(s) of the Passenger root path (/var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6) can be changed by non-root user(s):
+
+ - /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6 is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0 is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp/vendor/bundle is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp/vendor is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code/PoolFootballApp is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool/code is not secure: it can be modified by user footpoolapp
+ - /var/www/footpool is not secure: it can be modified by user footpoolapp
+
+Please either fix up the permissions for the insecure paths, or install Passenger in a different location that can only be modified by root.
+[ N 2020-09-29 01:59:19.2926 14907/T1 age/Cor/CoreMain.cpp:1015 ]: Passenger core online, PID 14907
+
+[ N 2020-09-29 01:59:21.3987 14907/T9 age/Cor/CoreMain.cpp:671 ]: Signal received. Gracefully shutting down... (send signal 2 more time(s) to force shutdown)
+[ N 2020-09-29 01:59:21.3988 14907/T1 age/Cor/CoreMain.cpp:1246 ]: Received command to shutdown gracefully. Waiting until all clients have disconnected...
+[ N 2020-09-29 01:59:21.3988 14907/Tc Ser/Server.h:902 ]: [ServerThr.3] Freed 0 spare client objects
+[ N 2020-09-29 01:59:21.3988 14907/T9 Ser/Server.h:902 ]: [ServerThr.1] Freed 0 spare client objects
+[ N 2020-09-29 01:59:21.3989 14907/Tc Ser/Server.h:558 ]: [ServerThr.3] Shutdown finished
+[ N 2020-09-29 01:59:21.3989 14907/T9 Ser/Server.h:558 ]: [ServerThr.1] Shutdown finished
+[ N 2020-09-29 01:59:21.3989 14907/Te Ser/Server.h:902 ]: [ServerThr.4] Freed 0 spare client objects
+[ N 2020-09-29 01:59:21.3989 14907/Te Ser/Server.h:558 ]: [ServerThr.4] Shutdown finished
+[ N 2020-09-29 01:59:21.3990 14907/Tg Ser/Server.h:902 ]: [ApiServer] Freed 0 spare client objects
+[ N 2020-09-29 01:59:21.3991 14907/Tg Ser/Server.h:558 ]: [ApiServer] Shutdown finished
+[ N 2020-09-29 01:59:21.4001 14907/Ta Ser/Server.h:902 ]: [ServerThr.2] Freed 0 spare client objects
+[ N 2020-09-29 01:59:21.4001 14907/Ta Ser/Server.h:558 ]: [ServerThr.2] Shutdown finished
+/var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:132:in `initialize': Connection refused - connect(2) for "::1" port 3000 (Errno::ECONNREFUSED)
+	from /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:132:in `new'
+	from /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:132:in `rescue in connect'
+	from /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:129:in `connect'
+	from /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:89:in `socket'
+	from /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:108:in `head_request'
+	from /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:172:in `<main>'
+/var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:130:in `initialize': Connection refused - connect(2) for "127.0.0.1" port 3000 (Errno::ECONNREFUSED)
+	from /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:130:in `new'
+	from /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:130:in `connect'
+	from /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:89:in `socket'
+	from /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:108:in `head_request'
+	from /var/www/footpool/code/PoolFootballApp/vendor/bundle/ruby/2.6.0/gems/passenger-6.0.6/src/helper-scripts/prespawn:172:in `<main>'
+[ N 2020-09-29 01:59:21.9182 14907/T5 age/Cor/SecurityUpdateChecker.h:519 ]: Security update check: no update found (next check in 24 hours)
+[ N 2020-09-29 01:59:21.9708 14907/T1 age/Cor/CoreMain.cpp:1325 ]: Passenger core shutdown finished
