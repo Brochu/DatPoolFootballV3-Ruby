@@ -10,8 +10,8 @@ capybara-*.html
 # Ignore all logfiles and tempfiles.
 /PoolFootballApp/log/*
 /PoolFootballApp/tmp/*
-!log/.keep
-!tmp/.keep
+!/PoolFootballApp/log/.keep
+!/PoolFootballApp/tmp/.keep
 
 # TODO Comment out this rule if you are OK with secrets being uploaded to the repo
 /PoolFootballApp/config/initializers/secret_token.rb
