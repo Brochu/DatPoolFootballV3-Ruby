@@ -1,0 +1,51 @@
+*.gem
+*.rbc
+
+### Rails ###
+*.rbc
+capybara-*.html
+.rspec
+/PoolFootballApp/public/system
+
+# Ignore all logfiles and tempfiles.
+/PoolFootballApp/log/*
+/PoolFootballApp/tmp/*
+!log/.keep
+!tmp/.keep
+
+# TODO Comment out this rule if you are OK with secrets being uploaded to the repo
+/PoolFootballApp/config/initializers/secret_token.rb
+/PoolFootballApp/config/master.key
+/PoolFootballApp/config/mongoid.yml
+
+# Only include if you have production secrets in this file, which is no longer a Rails default
+# config/secrets.yml
+
+# dotenv, dotenv-rails
+# TODO Comment out these rules if environment variables can be committed
+/PoolFootballApp/.env
+/PoolFootballApp/.env.*
+
+## Environment normalization:
+/PoolFootballApp/.bundle
+/PoolFootballApp/vendor/bundle
+
+# if using bower-rails ignore default bower_components path bower.json files
+/PoolFootballApp/vendor/assets/bower_components
+
+# Ignore node_modules
+/PoolFootballApp/node_modules/
+
+# Ignore precompiled javascript packs
+/PoolFootballApp/public/packs
+/PoolFootballApp/public/packs-test
+/PoolFootballApp/public/assets
+
+# Ignore yarn files
+/PoolFootballApp/yarn-error.log
+yarn-debug.log*
+.yarn-integrity
+
+# Ignore uploaded files in development
+/PoolFootballApp/storage/*
+!/storage/.keep
