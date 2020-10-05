@@ -4,5 +4,4 @@ class Pool
   field :motp, type: String
 
   has_many :poolers, dependent: :destroy
-  has_many :picks, dependent: :destroy
 end

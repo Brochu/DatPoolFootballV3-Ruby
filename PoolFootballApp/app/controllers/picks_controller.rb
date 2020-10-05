@@ -15,6 +15,14 @@ class PicksController < ApplicationController
   # GET /picks/new
   def new
     @pick = Pick.new
+    @pick.season = params[:season]
+    @pick.week = params[:week]
+
+    @week_data = get_week(params[:season], params[:week])["events"].map do |x|
+      x[:home_code] = get_shortname(x["strHomeTeam"])
+      x[:away_code] = get_shortname(x["strAwayTeam"])
+      x
+    end
   end
 
   # GET /picks/1/edit
@@ -24,7 +32,28 @@ class PicksController < ApplicationController
   # POST /picks
   # POST /picks.json
   def create
-    @pick = Pick.new(pick_params)
+    @pick = Pick.new
+    params = pick_params["pick"]
+
+    @pick.season = params["season"]
+    @pick.week = params["week"]
+    @pick.pooler_id = session[:current_pooler]["_id"]["$oid"]
+
+    # Set the pick string here based on data
+    str = get_week(@pick.season, @pick.week)["events"].reduce("") do |out, game|
+      cur = params["data"][game["idEvent"]]
+
+      if (cur != nil) then
+        out << cur
+      else
+        out << "N/A"
+      end
+
+      out << "|"
+    end
+
+    @pick.pickstring = str.chop
+    puts "---->#{@pick.inspect}"
 
     respond_to do |format|
       if @pick.save
@@ -69,6 +98,7 @@ class PicksController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def pick_params
-      params.require(:pick).permit(:season, :week, :pickstring, :pooler_id, :pool_id)
+      # params.require(:pick).permit(:season, :week, :pickstring, :pooler_id, :data)
+      params
     end
 end

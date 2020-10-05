@@ -11,30 +11,30 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :season %>
-    <%= form.text_field :season %>
-  </div>
+  <% @week_data.each do |game| %>
+    <ul>
+      <li>
+        <label for="<%= "pick_#{game['idEvent']}_#{game[:away_code]}" %>"><%= game["strAwayTeam"] %></label>
+        <input
+          type="radio"
+          name="<%= "pick[data][#{game['idEvent']}]" %>"
+          id="<%= "pick_#{game['idEvent']}_#{game[:away_code]}" %>"
+          value="<%= game[:away_code] %>"
+        />
+        VS.
+        <label for="<%= "pick_#{game['idEvent']}_#{game[:home_code]}" %>"><%= game["strHomeTeam"] %></label>
+        <input
+          type="radio"
+          name="<%= "pick[data][#{game['idEvent']}]" %>"
+          id="<%= "pick_#{game['idEvent']}_#{game[:home_code]}" %>"
+          value="<%= game[:home_code] %>"
+        />
+      </li>
+    </ul>
+  <% end %>
 
-  <div class="field">
-    <%= form.label :week %>
-    <%= form.text_field :week %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pickstring %>
-    <%= form.text_field :pickstring %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pooler_id %>
-    <%= form.text_field :pooler_id %>
-  </div>
-
-  <div class="field">
-    <%= form.label :pool_id %>
-    <%= form.text_field :pool_id %>
-  </div>
+  <%= form.hidden_field(:season) %>
+  <%= form.hidden_field(:week) %>
 
   <div class="actions">
     <%= form.submit %>

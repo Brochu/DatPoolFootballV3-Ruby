@@ -17,4 +17,11 @@ Rails.application.routes.draw do
   # Client facing resources
   resources :pools, only: [:index]
   resources :poolers, only: [:new, :create, :show, :edit, :update]
+
+  get '/picks' => 'picks#index'
+
+  get '/picks/new/:season/:week' => 'picks#new', as: :new_pick_path
+  post '/picks' => 'picks#create'
+
+  get '/picks/:id' => 'picks#show', as: :pick
 end

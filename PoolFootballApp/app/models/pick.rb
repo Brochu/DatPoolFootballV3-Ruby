@@ -5,5 +5,4 @@ class Pick
   field :pickstring, type: String
 
   belongs_to :pooler
-  belongs_to :pool
 end

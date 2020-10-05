@@ -5,7 +5,6 @@ class PoolsController < ApplicationController
   # GET /pools.json
   def index
     @pools = Pool.all
-    puts session[:userId];
   end
 
   # GET /pools/1

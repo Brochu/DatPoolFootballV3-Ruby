@@ -21,7 +21,6 @@
         <td><%= pick.week %></td>
         <td><%= pick.pickstring %></td>
         <td><%= pick.pooler_id %></td>
-        <td><%= pick.pool_id %></td>
         <td><%= link_to 'Show', pick %></td>
         <td><%= link_to 'Edit', edit_pick_path(pick) %></td>
         <td><%= link_to 'Destroy', pick, method: :delete, data: { confirm: 'Are you sure?' } %></td>
@@ -32,4 +31,4 @@
 
 <br>
 
-<%= link_to 'New Pick', new_pick_path %>
+<%= link_to 'New Pick', new_pick_path_url(:season=> 2020, :week=> 1) %>
