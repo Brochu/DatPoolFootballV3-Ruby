@@ -20,6 +20,12 @@
           name="<%= "pick[data][#{game['idEvent']}]" %>"
           id="<%= "pick_#{game['idEvent']}_#{game[:away_code]}" %>"
           value="<%= game[:away_code] %>"
+          <% if(game[:home_code] == @favTeam) then %>
+            <%= disabled="disabled" %>
+          <% end %>
+          <% if(game[:away_code] == @favTeam) then %>
+            <%= checked="checked" %>
+          <% end %>
         />
         VS.
         <label for="<%= "pick_#{game['idEvent']}_#{game[:home_code]}" %>"><%= game["strHomeTeam"] %></label>
@@ -28,6 +34,12 @@
           name="<%= "pick[data][#{game['idEvent']}]" %>"
           id="<%= "pick_#{game['idEvent']}_#{game[:home_code]}" %>"
           value="<%= game[:home_code] %>"
+          <% if(game[:away_code] == @favTeam) then %>
+            <%= disabled="disabled" %>
+          <% end %>
+          <% if(game[:home_code] == @favTeam) then %>
+            <%= checked="checked" %>
+          <% end %>
         />
       </li>
     </ul>

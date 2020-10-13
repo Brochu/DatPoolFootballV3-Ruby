@@ -4,7 +4,18 @@ class PicksController < ApplicationController
   # GET /picks
   # GET /picks.json
   def index
-    @picks = Pick.all
+    user = User.where(token: session[:user_token]).first
+    pooler = Pooler.where(user_id: user.id).first
+
+    @picks = []
+    (1..21).each do |w|
+      idx = pooler.picks.find_index { |p| p.week == w }
+      if (idx != nil)
+        @picks.push(pooler.picks[idx])
+      else
+        @picks.push(nil)
+      end
+    end
   end
 
   # GET /picks/1
@@ -17,6 +28,8 @@ class PicksController < ApplicationController
     @pick = Pick.new
     @pick.season = params[:season]
     @pick.week = params[:week]
+
+    @favTeam = session[:current_pooler]["favTeam"]
 
     @week_data = get_week(params[:season], params[:week])["events"].map do |x|
       x[:home_code] = get_shortname(x["strHomeTeam"])
@@ -53,7 +66,6 @@ class PicksController < ApplicationController
     end
 
     @pick.pickstring = str.chop
-    puts "---->#{@pick.inspect}"
 
     respond_to do |format|
       if @pick.save
