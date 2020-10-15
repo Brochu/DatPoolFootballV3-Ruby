@@ -21,11 +21,13 @@ class PicksController < ApplicationController
   # GET /picks/1
   # GET /picks/1.json
   def show
-    @pick.season = params[:season]
-    @pick.week = params[:week]
+  end
 
-    user = User.where(token: session[:user_token]).first
-    pooler = Pooler.where(user_id: user.id).first
+  # GET /picks/2020/1
+  def show_week
+    # add logic to show the picks in a better way
+    # maybe get the picks for all poolers in pool
+    @pick = Pick.where(season: params[:season], week: params[:week]).first
   end
 
   # GET /picks/new
