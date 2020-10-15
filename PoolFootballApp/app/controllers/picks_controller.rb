@@ -7,15 +7,17 @@ class PicksController < ApplicationController
     user = User.where(token: session[:user_token]).first
     pooler = Pooler.where(user_id: user.id).first
 
-    @picks = []
-    (1..21).each do |w|
-      idx = pooler.picks.find_index { |p| p.week == w }
-      if (idx != nil)
-        @picks.push(pooler.picks[idx])
-      else
-        @picks.push(nil)
-      end
+    @max_season = (Pick.where(pooler_id: pooler._id).max_by do |x| 
+      x.season
+    end).season
+
+    criteria = Pick.where(pooler_id: pooler._id, season: @max_season).order_by(week: 1)
+    @picks = criteria.to_a
+
+    (1..20).each do |i|
+      @picks[i] = @picks[i]
     end
+    puts @picks.inspect
   end
 
   # GET /picks/1
@@ -28,6 +30,13 @@ class PicksController < ApplicationController
     # add logic to show the picks in a better way
     # maybe get the picks for all poolers in pool
     @pick = Pick.where(season: params[:season], week: params[:week]).first
+  end
+
+  # GET /picks/2020
+  def show_season
+    # add logic to show the picks in a better way
+    # maybe get the picks for all poolers in pool
+    @pick = Pick.where(season: params[:season]).first
   end
 
   # GET /picks/new
@@ -63,7 +72,6 @@ class PicksController < ApplicationController
     user = User.where(token: session[:user_token]).first
     pooler = Pooler.where(user_id: user.id).first
     @pick.pooler_id = pooler._id
-    puts "---->#{@pick.inspect}"
 
     # Set the pick string here based on data
     str = get_week(@pick.season, @pick.week)["events"].reduce("") do |out, game|

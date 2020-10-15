@@ -11,10 +11,17 @@
     </div>
   <% end %>
 
+  <div class="row justify-content-center">
+  <table class="w-50 table table-sm">
   <% @week_data.each do |game| %>
-    <ul>
-      <li>
-        <label for="<%= "pick_#{game['idEvent']}_#{game[:away_code]}" %>"><%= game["strAwayTeam"] %></label>
+    <tr>
+      <td style="text-align: right">
+        <label for="<%= "pick_#{game['idEvent']}_#{game[:away_code]}" %>">
+          <%= game["strAwayTeam"] %>
+          <%= image_tag("#{game[:away_code]}.png", size: "21") %>
+        </label>
+      </td>
+      <td>
         <input
           type="radio"
           name="<%= "pick[data][#{game['idEvent']}]" %>"
@@ -27,8 +34,11 @@
             <%= checked="checked" %>
           <% end %>
         />
+      </td>
+      <td>
         VS.
-        <label for="<%= "pick_#{game['idEvent']}_#{game[:home_code]}" %>"><%= game["strHomeTeam"] %></label>
+      </td>
+      <td>
         <input
           type="radio"
           name="<%= "pick[data][#{game['idEvent']}]" %>"
@@ -41,9 +51,17 @@
             <%= checked="checked" %>
           <% end %>
         />
-      </li>
-    </ul>
+      </td>
+      <td style="text-align: left">
+        <label for="<%= "pick_#{game['idEvent']}_#{game[:home_code]}" %>">
+          <%= image_tag("#{game[:home_code]}.png", size: "21") %>
+          <%= game["strHomeTeam"] %>
+        </label>
+      </td>
+    </tr>
   <% end %>
+  </table>
+  </div>
 
   <%= form.hidden_field(:season) %>
   <%= form.hidden_field(:week) %>

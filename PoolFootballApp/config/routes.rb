@@ -24,5 +24,6 @@ Rails.application.routes.draw do
   post '/picks' => 'picks#create'
 
   get '/picks/:id' => 'picks#show', as: :pick
-  get '/picks/:season/:week' => 'picks#show_week'
+  get '/picks/search/:season/:week' => 'picks#show_week'
+  get '/picks/search/:season' => 'picks#show_season'
 end

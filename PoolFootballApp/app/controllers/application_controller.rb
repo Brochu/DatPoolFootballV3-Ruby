@@ -19,7 +19,7 @@ class ApplicationController < ActionController::Base
         "IND" => "Indianapolis Colts",
         "JAX" => "Jacksonville Jaguars",
         "KC" => "Kansas City Chiefs",
-        "LA" => "Las Angeles Rams",
+        "LA" => "Los Angeles Rams",
         "LAC" => "Los Angeles Chargers",
         "LV" => "Las Vegas Raiders",
         "MIA" => "Miami Dolphins",
@@ -34,7 +34,7 @@ class ApplicationController < ActionController::Base
         "SF" => "San Francisco 49ers",
         "TB" => "Tampa Bay Buccaneers",
         "TEN" => "Tennessee Titans",
-        "WAS" => "Washington Football Team"
+        "WAS" => "Washington"
     }
 
     @@longname_map = {
@@ -54,7 +54,7 @@ class ApplicationController < ActionController::Base
         "Indianapolis Colts" => "IND",
         "Jacksonville Jaguars" => "JAX",
         "Kansas City Chiefs" => "KC",
-        "Las Angeles Rams" => "LA",
+        "Los Angeles Rams" => "LA",
         "Los Angeles Chargers" => "LAC",
         "Las Vegas Raiders" => "LV",
         "Miami Dolphins" => "MIA",
@@ -69,7 +69,7 @@ class ApplicationController < ActionController::Base
         "San Francisco 49ers" => "SF",
         "Tampa Bay Buccaneers" => "TB",
         "Tennessee Titans" => "TEN",
-        "Washington Football Team" => "WAS"
+        "Washington" => "WAS"
     }
 
     def get_teams
