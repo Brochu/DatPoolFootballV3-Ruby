@@ -21,6 +21,11 @@ class PicksController < ApplicationController
   # GET /picks/1
   # GET /picks/1.json
   def show
+    @pick.season = params[:season]
+    @pick.week = params[:week]
+
+    user = User.where(token: session[:user_token]).first
+    pooler = Pooler.where(user_id: user.id).first
   end
 
   # GET /picks/new
@@ -29,7 +34,9 @@ class PicksController < ApplicationController
     @pick.season = params[:season]
     @pick.week = params[:week]
 
-    @favTeam = session[:current_pooler]["favTeam"]
+    user = User.where(token: session[:user_token]).first
+    pooler = Pooler.where(user_id: user.id).first
+    @favTeam = pooler.favTeam
 
     @week_data = get_week(params[:season], params[:week])["events"].map do |x|
       x[:home_code] = get_shortname(x["strHomeTeam"])
@@ -50,7 +57,11 @@ class PicksController < ApplicationController
 
     @pick.season = params["season"]
     @pick.week = params["week"]
-    @pick.pooler_id = session[:current_pooler]["_id"]["$oid"]
+
+    user = User.where(token: session[:user_token]).first
+    pooler = Pooler.where(user_id: user.id).first
+    @pick.pooler_id = pooler._id
+    puts "---->#{@pick.inspect}"
 
     # Set the pick string here based on data
     str = get_week(@pick.season, @pick.week)["events"].reduce("") do |out, game|
@@ -69,6 +80,7 @@ class PicksController < ApplicationController
 
     respond_to do |format|
       if @pick.save
+        # Redirect properly with season, week params
         format.html { redirect_to @pick, notice: 'Pick was successfully created.' }
         format.json { render :show, status: :created, location: @pick }
       else

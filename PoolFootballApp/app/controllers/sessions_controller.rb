@@ -40,7 +40,6 @@ class SessionsController < ApplicationController
 
   def redirect_to_home(user, pooler)
     if (@pooler != nil)
-      session[:current_pooler] = @pooler
       redirect_to pools_path
     else
       redirect_to new_pooler_path
