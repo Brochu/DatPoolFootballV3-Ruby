@@ -4,7 +4,12 @@ class PoolsController < ApplicationController
   # GET /pools
   # GET /pools.json
   def index
-    @pools = Pool.all
+    user = User.where(token: session[:user_token]).first
+    pooler = Pooler.where(user_id: user.id).first
+
+    puts "---->#{params["w"].inspect}"
+
+    @pool = pooler.pool
   end
 
   # GET /pools/1

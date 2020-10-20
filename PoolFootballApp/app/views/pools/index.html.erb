@@ -12,16 +12,14 @@
   </thead>
 
   <tbody>
-    <% @pools.each do |pool| %>
       <tr>
-        <td><%= pool.name %></td>
-        <td><%= pool.motp %></td>
+        <td><%= @pool.name %></td>
+        <td><%= @pool.motp %></td>
         <td>
-        <% pool.poolers.each do |p| %>
+        <% @pool.poolers.each do |p| %>
           <span><%= p.name %></span>
         <% end %>
       </tr>
-    <% end %>
   </tbody>
 </table>
 
