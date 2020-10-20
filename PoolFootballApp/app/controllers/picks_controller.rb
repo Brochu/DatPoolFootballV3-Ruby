@@ -9,7 +9,8 @@ class PicksController < ApplicationController
 
     @max_season = (Pick.where(pooler_id: pooler._id).max_by do |x| 
       x.season
-    end).season
+    end)
+    @max_season = (@max_season!=nil) ? @max_season.season : Date.today.year
 
     criteria = Pick.where(pooler_id: pooler._id, season: @max_season).order_by(week: 1)
     @picks = criteria.to_a
