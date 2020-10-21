@@ -10,6 +10,38 @@
   </head>
 
   <body>
-    <%= yield %>
+
+    <% if (params["controller"] != "sessions") then %>
+    <nav class="navbar navbar-expand-md navbar-dark fixed-top bg-dark">
+      <span class="navbar-brand">
+      DatPoolFootball
+      </span>
+      <span class="navbar-brand">
+      | <%= params["controller"] %> > <%= params["action"] %>
+      </span>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarCollapse" aria-controls="navbarCollapse" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarCollapse">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="/pools">Pools</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/picks">Picks</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="/poolers">Poolers</a>
+          </li>
+        </ul>
+        <a href="/sessions/goodbye" class="btn btn-outline-success" role="button">Logout</a>
+      </div>
+    </nav>
+    <% end %>
+
+    <main role="main" class="container">
+      <%= yield %>
+    </main>
+
   </body>
 </html>

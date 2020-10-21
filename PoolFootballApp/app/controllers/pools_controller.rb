@@ -7,7 +7,7 @@ class PoolsController < ApplicationController
     user = User.where(token: session[:user_token]).first
     pooler = Pooler.where(user_id: user.id).first
 
-    puts "---->#{params["w"].inspect}"
+    puts "---->#{params["controller"].inspect}"
 
     @pool = pooler.pool
   end
