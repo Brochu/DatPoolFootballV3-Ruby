@@ -4,10 +4,12 @@ class PoolsController < ApplicationController
   # GET /pools
   # GET /pools.json
   def index
+    if (!session.key?(:user_token)) then
+      redirect_to '/'
+    end
+
     user = User.where(token: session[:user_token]).first
     pooler = Pooler.where(user_id: user.id).first
-
-    puts "---->#{params["controller"].inspect}"
 
     @pool = pooler.pool
   end

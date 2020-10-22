@@ -4,6 +4,10 @@ class PicksController < ApplicationController
   # GET /picks
   # GET /picks.json
   def index
+    if (!session.key?(:user_token)) then
+      redirect_to '/'
+    end
+
     user = User.where(token: session[:user_token]).first
     pooler = Pooler.where(user_id: user.id).first
 
@@ -42,6 +46,10 @@ class PicksController < ApplicationController
 
   # GET /picks/new
   def new
+    if (!session.key?(:user_token)) then
+      redirect_to '/'
+    end
+
     @pick = Pick.new
     @pick.season = params[:season]
     @pick.week = params[:week]
@@ -64,6 +72,10 @@ class PicksController < ApplicationController
   # POST /picks
   # POST /picks.json
   def create
+    if (!session.key?(:user_token)) then
+      redirect_to '/'
+    end
+
     @pick = Pick.new
     params = pick_params["pick"]
 

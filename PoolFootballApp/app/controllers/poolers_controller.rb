@@ -3,9 +3,10 @@ class PoolersController < ApplicationController
 
   # GET /poolers
   # GET /poolers.json
-  #def index
-  #  @poolers = Pooler.all
-  #end
+  def index
+    set_pooler
+    redirect_to @pooler
+  end
 
   # GET /poolers/1
   # GET /poolers/1.json
@@ -26,6 +27,10 @@ class PoolersController < ApplicationController
   # POST /poolers
   # POST /poolers.json
   def create
+    if (!session.key?(:user_token)) then
+      redirect_to '/'
+    end
+
     @pooler = Pooler.new(pooler_params)
 
     @user = User.where(token: session[:user_token]).first
