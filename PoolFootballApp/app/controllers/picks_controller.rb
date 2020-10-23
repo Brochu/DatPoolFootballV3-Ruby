@@ -4,13 +4,14 @@ class PicksController < ApplicationController
   # GET /picks
   # GET /picks.json
   def index
-    if (!session.key?(:user_token)) then
+    user = User.where(token: session[:user_token]).first
+    puts user.inspect
+    if (user == nil) then
       redirect_to '/'
+      return
     end
 
-    user = User.where(token: session[:user_token]).first
     pooler = Pooler.where(user_id: user.id).first
-
     @max_season = (Pick.where(pooler_id: pooler._id).max_by do |x| 
       x.season
     end)
@@ -46,15 +47,15 @@ class PicksController < ApplicationController
 
   # GET /picks/new
   def new
-    if (!session.key?(:user_token)) then
-      redirect_to '/'
-    end
-
     @pick = Pick.new
     @pick.season = params[:season]
     @pick.week = params[:week]
 
     user = User.where(token: session[:user_token]).first
+    if (user == nil) then
+      redirect_to '/'
+      return
+    end
     pooler = Pooler.where(user_id: user.id).first
     @favTeam = pooler.favTeam
 
@@ -72,10 +73,6 @@ class PicksController < ApplicationController
   # POST /picks
   # POST /picks.json
   def create
-    if (!session.key?(:user_token)) then
-      redirect_to '/'
-    end
-
     @pick = Pick.new
     params = pick_params["pick"]
 
@@ -83,6 +80,11 @@ class PicksController < ApplicationController
     @pick.week = params["week"]
 
     user = User.where(token: session[:user_token]).first
+    if (user == nil) then
+      redirect_to '/'
+      return
+    end
+
     pooler = Pooler.where(user_id: user.id).first
     @pick.pooler_id = pooler._id
 

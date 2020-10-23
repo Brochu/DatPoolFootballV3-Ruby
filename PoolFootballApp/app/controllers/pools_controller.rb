@@ -4,13 +4,13 @@ class PoolsController < ApplicationController
   # GET /pools
   # GET /pools.json
   def index
-    if (!session.key?(:user_token)) then
+    user = User.where(token: session[:user_token]).first
+    if (user == nil) then
       redirect_to '/'
+      return
     end
 
-    user = User.where(token: session[:user_token]).first
     pooler = Pooler.where(user_id: user.id).first
-
     @pool = pooler.pool
   end
 

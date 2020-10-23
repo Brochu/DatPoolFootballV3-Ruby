@@ -27,13 +27,14 @@ class PoolersController < ApplicationController
   # POST /poolers
   # POST /poolers.json
   def create
-    if (!session.key?(:user_token)) then
-      redirect_to '/'
-    end
-
     @pooler = Pooler.new(pooler_params)
 
     @user = User.where(token: session[:user_token]).first
+    if (@user == nil) then
+      redirect_to '/'
+      return
+    end
+
     @pooler.pool_id = BSON::ObjectId.new
     @pooler.user_id = @user.id
 

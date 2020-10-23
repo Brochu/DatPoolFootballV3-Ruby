@@ -1,9 +1,9 @@
 class SessionsController < ApplicationController
   def login
-    if (session.key?(:user_token))
-      @user = User.where(token: session[:user_token]).first
-      @pooler = Pooler.where(user_id: @user.id).first
+    @user = User.where(token: session[:user_token]).first
 
+    if (@user != nil) then
+      @pooler = Pooler.where(user_id: @user.id).first
       redirect_to_home(@user, @pooler)
     end
   end
