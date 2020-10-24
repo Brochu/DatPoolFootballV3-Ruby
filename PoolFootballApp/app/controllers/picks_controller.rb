@@ -5,7 +5,6 @@ class PicksController < ApplicationController
   # GET /picks.json
   def index
     user = User.where(token: session[:user_token]).first
-    puts user.inspect
     if (user == nil) then
       redirect_to '/'
       return
@@ -23,7 +22,6 @@ class PicksController < ApplicationController
     (1..20).each do |i|
       @picks[i] = @picks[i]
     end
-    puts @picks.inspect
   end
 
   # GET /picks/1
