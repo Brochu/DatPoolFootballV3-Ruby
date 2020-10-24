@@ -1,39 +1,47 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pool: <%= @pool.name %></h1>
-<h3><%= @pool.motp %></h3>
+<h2>Pool: <%= @pool.name %></h2>
 <h4>Pour saison <%= @week_info[:season] %> - semaine <%= @week_info[:week] %></h4>
 
 <table class="table table-sm">
   <thead>
     <tr>
-      <th colspan="5">Match</th>
+      <th colspan="7">Match</th>
       <% @pool.poolers.each do |p| %>
-        <th><%= p.name %></th>
+        <th style="text-align: center"><%= p.name %></th>
       <% end %>
     </tr>
   </thead>
   <tbody>
-  <% @week_data["events"].each do |game| %>
+  <% @week_data.each do |game| %>
     <tr>
       <td><%= game["strAwayTeam"] %></td>
-      <% if (game["intAwayScore"].to_i > game["intHomeScore"].to_i) %>
+      <td style="text-align: center"><%= image_tag("#{game[:away_code]}.png", size: "21") %></td>
+      <% if (game[:away_won]) %>
         <td>(<strong><%= game["intAwayScore"] %></strong>)</td>
       <% else %>
         <td>(<%= game["intAwayScore"] %>)</td>
       <% end %>
       <td>VS.</td>
-      <% if (game["intHomeScore"].to_i > game["intAwayScore"].to_i) %>
+      <% if (game[:home_won]) %>
         <td>(<strong><%= game["intHomeScore"] %></strong>)</td>
       <% else %>
         <td>(<%= game["intHomeScore"] %>)</td>
       <% end %>
+      <td style="text-align: center"><%= image_tag("#{game[:home_code]}.png", size: "21") %></td>
       <td style="text-align: right"><%= game["strHomeTeam"] %></td>
 
-      <% @pool.poolers.each do |p| %>
-        <td style="text-align: center">+0</td>
+      <% @pool.poolers.each_with_index do |p, i| %>
+        <% if (i == 0) %>
+          <td style="text-align: center; border-left: 2px solid #000">+0</td>
+        <% else %>
+          <td style="text-align: center">+0</td>
+        <% end %>
+
       <% end %>
     </tr>
   <% end %>
   </tbody>
 </table>
+
+<p><i>"<%= @pool.motp %>"</i></p>
