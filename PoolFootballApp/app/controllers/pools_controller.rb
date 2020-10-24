@@ -10,10 +10,10 @@ class PoolsController < ApplicationController
       return
     end
 
-    pooler = Pooler.where(user_id: user.id).first
-    @pool = pooler.pool
+    @pool = Pooler.where(user_id: user.id).first.pool
+    @poolers = @pool.poolers.to_a
 
-    @week_info = find_current_week(@pool)
+    @week_info = find_current_week(@poolers)
     @week_data = get_week(@week_info[:season], @week_info[:week])["events"].map do |x|
       x[:home_code] = get_shortname(x["strHomeTeam"])
       x[:home_won] = x["intHomeScore"].to_i > x["intAwayScore"].to_i
@@ -21,6 +21,15 @@ class PoolsController < ApplicationController
       x[:away_code] = get_shortname(x["strAwayTeam"])
       x[:away_won] = x["intAwayScore"].to_i > x["intHomeScore"].to_i
       x
+    end
+
+    @results = calculate_results(@poolers,
+              @week_info[:season],
+              @week_info[:week],
+              @week_data)
+
+    @totals = @results.map do |r|
+      r.reduce(0) { |t, c| t = t + c }
     end
   end
 
@@ -89,8 +98,8 @@ class PoolsController < ApplicationController
       params.require(:pool).permit(:name, :motp)
     end
 
-    def find_current_week(pool)
-      t = pool.poolers.reduce({ :season => -1, :week => -1}) do |maxes, pooler|
+    def find_current_week(poolers)
+      t = poolers.reduce({ :season => -1, :week => -1}) do |maxes, pooler|
         max_season = pooler.picks.max_by { |p| p.season }
         if (max_season != nil && max_season.season > maxes[:season]) then
           maxes[:season] = max_season.season
@@ -111,5 +120,19 @@ class PoolsController < ApplicationController
       end
 
       return t
+    end
+
+    def calculate_results(poolers, season, week, week_data)
+      (0...poolers.size).map do |pi|
+        curr_picks = poolers[pi].picks.where( season: season, week: week).to_a
+        puts curr_picks.inspect
+
+        if (curr_picks.size <= 0) then
+          (0...week_data.size).map { |g| -1 }
+        else
+          curr_picks = curr_picks[0]
+          # Correct the scores here
+        end
+      end
     end
 end
