@@ -1,26 +1,39 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Pools</h1>
+<h1>Pool: <%= @pool.name %></h1>
+<h3><%= @pool.motp %></h3>
+<h4>Pour saison <%= @week_info[:season] %> - semaine <%= @week_info[:week] %></h4>
 
-<table>
+<table class="table table-sm">
   <thead>
     <tr>
-      <th>Name</th>
-      <th>Motp</th>
-      <th colspan="3"></th>
+      <th colspan="5">Match</th>
+      <% @pool.poolers.each do |p| %>
+        <th><%= p.name %></th>
+      <% end %>
     </tr>
   </thead>
-
   <tbody>
-      <tr>
-        <td><%= @pool.name %></td>
-        <td><%= @pool.motp %></td>
-        <td>
-        <% @pool.poolers.each do |p| %>
-          <span><%= p.name %></span>
-        <% end %>
-      </tr>
+  <% @week_data["events"].each do |game| %>
+    <tr>
+      <td><%= game["strAwayTeam"] %></td>
+      <% if (game["intAwayScore"].to_i > game["intHomeScore"].to_i) %>
+        <td>(<strong><%= game["intAwayScore"] %></strong>)</td>
+      <% else %>
+        <td>(<%= game["intAwayScore"] %>)</td>
+      <% end %>
+      <td>VS.</td>
+      <% if (game["intHomeScore"].to_i > game["intAwayScore"].to_i) %>
+        <td>(<strong><%= game["intHomeScore"] %></strong>)</td>
+      <% else %>
+        <td>(<%= game["intHomeScore"] %>)</td>
+      <% end %>
+      <td style="text-align: right"><%= game["strHomeTeam"] %></td>
+
+      <% @pool.poolers.each do |p| %>
+        <td style="text-align: center">+0</td>
+      <% end %>
+    </tr>
+  <% end %>
   </tbody>
 </table>
-
-<br>

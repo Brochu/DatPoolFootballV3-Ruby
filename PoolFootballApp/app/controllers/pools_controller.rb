@@ -12,6 +12,9 @@ class PoolsController < ApplicationController
 
     pooler = Pooler.where(user_id: user.id).first
     @pool = pooler.pool
+
+    @week_info = find_current_week(@pool)
+    @week_data = get_week(@week_info[:season], @week_info[:week])
   end
 
   # GET /pools/1
@@ -77,5 +80,29 @@ class PoolsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def pool_params
       params.require(:pool).permit(:name, :motp)
+    end
+
+    def find_current_week(pool)
+      t = pool.poolers.reduce({ :season => -1, :week => -1}) do |maxes, pooler|
+        max_season = pooler.picks.max_by { |p| p.season }
+        if (max_season != nil && max_season.season > maxes[:season]) then
+          maxes[:season] = max_season.season
+        end
+
+        max_week = pooler.picks.max_by { |p| p.week }
+        if (max_week != nil && max_week.week > maxes[:week]) then
+          maxes[:week] = max_week.week
+        end
+        maxes
+      end
+
+      if (t[:season] == -1) then
+        t[:season] = Date.today.year
+      end
+      if (t[:week] == -1) then
+        t[:week] = 1
+      end
+
+      return t
     end
 end
