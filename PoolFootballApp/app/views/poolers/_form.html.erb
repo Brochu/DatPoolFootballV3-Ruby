@@ -31,14 +31,20 @@
   </div>
 
   <div class="dropdown">
-    <button class="btn-sm btn-secondary dropdown-toggle" type="button" id="dropdownMenu2" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-      <%= image_tag("ARI.png", size: "21", id: "currentTeamImg") %>
+    <button class="btn-sm btn-secondary dropdown-toggle"
+            type="button"
+            id="dropdownMenu2"
+            data-toggle="dropdown"
+            aria-haspopup="true"
+            aria-expanded="false"
+            data-display="static">
+      <%= image_tag("ARI.png", size: "25", id: "currentTeamImg") %>
       <label id="currentTeamName">ARI</label>
     </button>
     <div class="dropdown-menu" aria-labelledby="dropdownMenu2">
     <% @teams.each do |t| %>
-      <button class="dropdown-item" type="button" onclick="setFavTeam('<%= t %>', '<%= image_path(t + '.png') %>')">
-        <%= image_tag("#{t}.png", size: "21") %>
+      <button class="dropdown-item small" type="button" onclick="setFavTeam('<%= t %>', '<%= image_path(t + '.png') %>')">
+        <%= image_tag("#{t}.png", size: "16") %>
         <%= t %>
       </button>
     <% end %>

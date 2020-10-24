@@ -4,8 +4,14 @@ class PoolersController < ApplicationController
   # GET /poolers
   # GET /poolers.json
   def index
-    set_pooler
-    redirect_to @pooler
+    user = User.where(token: session[:user_token]).first
+    if (user == nil) then
+      redirect_to '/'
+      return
+    end
+
+    pooler = Pooler.where(user_id: user.id).first
+    redirect_to pooler
   end
 
   # GET /poolers/1
@@ -15,6 +21,18 @@ class PoolersController < ApplicationController
 
   # GET /poolers/new
   def new
+    user = User.where(token: session[:user_token]).first
+    if (user == nil) then
+      redirect_to '/'
+      return
+    end
+
+    @pooler = Pooler.where(user_id: user.id).first
+    if (@pooler != nil) then
+      redirect_to @pooler
+      return
+    end
+
     @pooler = Pooler.new
     @teams = get_teams
   end
