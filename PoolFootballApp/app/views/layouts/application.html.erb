@@ -24,13 +24,13 @@
       </button>
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav mr-auto">
-          <li class="nav-item active">
+          <li class="nav-item <%= params["controller"]=="pools" ? "active" : "" %>">
             <a class="nav-link" href="/pools">Pools</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <%= params["controller"]=="picks" ? "active" : "" %>">
             <a class="nav-link" href="/picks">Picks</a>
           </li>
-          <li class="nav-item">
+          <li class="nav-item <%= params["controller"]=="poolers" ? "active" : "" %>">
             <a class="nav-link" href="/poolers">Poolers</a>
           </li>
         </ul>

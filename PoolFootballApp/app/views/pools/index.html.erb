@@ -1,7 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Pool: <%= @pool.name %></h2>
-<h4>Pour saison <%= @week_info[:season] %> - semaine <%= @week_info[:week] %></h4>
+<h3>Pour saison <%= @week_info[:season] %> - semaine <%= @week_info[:week] %></h3>
 
 <table class="table table-sm table-bordered">
   <thead>
@@ -55,4 +54,14 @@
   </tbody>
 </table>
 
-<p><i>"<%= @pool.motp %>"</i></p>
+<div>
+  <% (1..21).each do |w| %>
+    <% if (w == @week_info[:week].to_i) then %>
+      - <span><%= w %></span>
+    <% else %>
+      - <span><%= link_to "#{w}", pools_path(season: @week_info[:season], week: w) %></span>
+    <% end %>
+  <% end %>
+</div>
+
+<p>Pool: <%= @pool.name %> - <i>"<%= @pool.motp %>"</i></p>

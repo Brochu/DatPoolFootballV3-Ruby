@@ -13,7 +13,14 @@ class PoolsController < ApplicationController
     @pool = Pooler.where(user_id: user.id).first.pool
     @poolers = @pool.poolers.to_a
 
-    @week_info = find_current_week(@poolers)
+    if (params[:season] != nil && params[:week] != nil) then
+      @week_info = {
+        season: params[:season],
+        week: params[:week]
+      }
+    else
+      @week_info = find_current_week(@poolers)
+    end
     @week_data = get_week(@week_info[:season], @week_info[:week])["events"].map do |x|
       x[:home_code] = get_shortname(x["strHomeTeam"])
       x[:home_won] = x["intHomeScore"].to_i > x["intAwayScore"].to_i
