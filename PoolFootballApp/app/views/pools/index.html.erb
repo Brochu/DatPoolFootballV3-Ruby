@@ -3,10 +3,7 @@
 <h2>Pool: <%= @pool.name %></h2>
 <h4>Pour saison <%= @week_info[:season] %> - semaine <%= @week_info[:week] %></h4>
 
-<%= debug @results %>
-<%= debug @totals %>
-
-<table class="table table-sm">
+<table class="table table-sm table-bordered">
   <thead>
     <tr>
       <th colspan="7">Match</th>
@@ -37,11 +34,11 @@
       <% (0...@poolers.size).each do |pi| %>
         <% if (pi == 0) %>
           <td style="text-align: center; border-left: 2px solid #000">
-            <%= @results[pi][gi] >= 0 ? @results[pi][gi] : '-' %>
+            <%= @results[pi][gi] >= 0 ? "+#{@results[pi][gi]}" : '-' %>
           </td>
         <% else %>
           <td style="text-align: center">
-            <%= @results[pi][gi] >= 0 ? @results[pi][gi] : '-' %>
+            <%= @results[pi][gi] >= 0 ? "+#{@results[pi][gi]}" : '-' %>
           </td>
         <% end %>
       <% end %>

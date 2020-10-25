@@ -23,11 +23,13 @@ class PoolsController < ApplicationController
       x
     end
 
-    @results = calculate_results(@poolers,
-              @week_info[:season],
-              @week_info[:week],
-              @week_data)
-
+    picks_data = @poolers.map do |pooler|
+      {
+        :p => pooler,
+        :picks => pooler.picks.where(season: @week_info[:season], week: @week_info[:week]).to_a
+      }
+    end
+    @results = calculate_results(picks_data, @week_data)
     @totals = @results.map do |r|
       r.reduce(0) { |t, c| t = t + c }
     end
@@ -122,16 +124,31 @@ class PoolsController < ApplicationController
       return t
     end
 
-    def calculate_results(poolers, season, week, week_data)
-      (0...poolers.size).map do |pi|
-        curr_picks = poolers[pi].picks.where( season: season, week: week).to_a
-        puts curr_picks.inspect
-
-        if (curr_picks.size <= 0) then
+    def calculate_results(picks_data, week_data)
+      picks_data.map do |e|
+        if (e[:picks].size <= 0) then
           (0...week_data.size).map { |g| -1 }
         else
-          curr_picks = curr_picks[0]
-          # Correct the scores here
+          picks = e[:picks][0]["pickstring"].split("|")
+          week_data.each_with_index.map do |game, i|
+            if ((game[:away_won] && picks[i]==game[:away_code]) ||
+              (game[:home_won] && picks[i]==game[:home_code])) then
+
+              # pooler was right
+              unique = picks_data.one? do |x|
+                if (x[:picks].size > 0) then
+                  x[:picks][0]["pickstring"].split("|")[i]==picks[i]
+                else
+                  false
+                end
+              end
+
+              (unique) ? 3 : 2
+            else
+              #pooler was wrong OR tie game
+              (!game[:away_won] && !game[:home_won]) ? 1 : 0
+            end
+          end
         end
       end
     end
