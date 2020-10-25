@@ -1,6 +1,13 @@
 <p id="notice"><%= notice %></p>
 
-<h3>Pour saison <%= @week_info[:season] %> - semaine <%= @week_info[:week] %></h3>
+<h3>
+  Pour saison <%= @week_info[:season] %>
+  <% if (params[:season_total] == nil) then %>
+    - semaine <%= @week_info[:week] %>
+  <% end %>
+</h3>
+
+<% if (params[:season_total] == nil) then %>
 
 <table class="table table-sm table-bordered">
   <thead>
@@ -55,6 +62,7 @@
 </table>
 
 <div>
+  Autres semaines
   <% (1..21).each do |w| %>
     <% if (w == @week_info[:week].to_i) then %>
       - <span><%= w %></span>
@@ -63,5 +71,40 @@
     <% end %>
   <% end %>
 </div>
+<div>
+  Total de la saison
+  <%= link_to @week_info[:season], pools_path(season: @week_info[:season], season_total: true) %>
+</div>
+
+<% else %>
+
+<table class="table table-sm table-bordered">
+  <tr>
+    <th>Semaines</th>
+    <% @poolers.each do |pooler| %>
+      <th><%= pooler.name %></th>
+    <% end %>
+  </tr>
+  <% @results.each_with_index do |result, i| %>
+    <tr>
+      <td>Semaine <%= i+1 %></td>
+      <% result.each do |score| %>
+        <td><%= score %></td>
+      <% end %>
+    </tr>
+  <% end %>
+  <tr>
+    <th>Totals</th>
+    <% @totals.each do |t| %>
+      <th><%= t %></th>
+    <% end %>
+  </tr>
+</table>
+
+<div>
+  <%= link_to "Retour", pools_path %>
+</div>
+
+<% end %>
 
 <p>Pool: <%= @pool.name %> - <i>"<%= @pool.motp %>"</i></p>

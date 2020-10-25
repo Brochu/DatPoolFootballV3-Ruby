@@ -21,24 +21,60 @@ class PoolsController < ApplicationController
     else
       @week_info = find_current_week(@poolers)
     end
-    @week_data = get_week(@week_info[:season], @week_info[:week])["events"].map do |x|
-      x[:home_code] = get_shortname(x["strHomeTeam"])
-      x[:home_won] = x["intHomeScore"].to_i > x["intAwayScore"].to_i
 
-      x[:away_code] = get_shortname(x["strAwayTeam"])
-      x[:away_won] = x["intAwayScore"].to_i > x["intHomeScore"].to_i
-      x
-    end
+    if (params[:season_total] == nil) then
+      @week_data = get_week(@week_info[:season], @week_info[:week])["events"].map do |x|
+        x[:home_code] = get_shortname(x["strHomeTeam"])
+        x[:home_won] = x["intHomeScore"].to_i > x["intAwayScore"].to_i
 
-    picks_data = @poolers.map do |pooler|
-      {
-        :p => pooler,
-        :picks => pooler.picks.where(season: @week_info[:season], week: @week_info[:week]).to_a
-      }
-    end
-    @results = calculate_results(picks_data, @week_data)
-    @totals = @results.map do |r|
-      r.reduce(0) { |t, c| t = t + c }
+        x[:away_code] = get_shortname(x["strAwayTeam"])
+        x[:away_won] = x["intAwayScore"].to_i > x["intHomeScore"].to_i
+        x
+      end
+      picks_data = @poolers.map do |pooler|
+        {
+          :p => pooler,
+          :picks => pooler.picks.where(season: @week_info[:season], week: @week_info[:week]).to_a
+        }
+      end
+
+      @results = calculate_week_results(picks_data, @week_data)
+      @totals = @results.map do |r|
+        r.reduce(0) { |t, c| t = t + c }
+      end
+    else
+      @results = (1..@week_info[:week]).map do |w|
+        week_data = get_week(@week_info[:season], w)["events"].map do |x|
+          x[:home_code] = get_shortname(x["strHomeTeam"])
+          x[:home_won] = x["intHomeScore"].to_i > x["intAwayScore"].to_i
+
+          x[:away_code] = get_shortname(x["strAwayTeam"])
+          x[:away_won] = x["intAwayScore"].to_i > x["intHomeScore"].to_i
+          x
+        end
+        picks_data = @poolers.map do |pooler|
+          {
+            :p => pooler,
+            :picks => pooler.picks.where(season: @week_info[:season], week: w).to_a
+          }
+        end
+
+        calculate_week_results(picks_data, week_data).map do |r|
+          r.reduce(0) do |t, c|
+            if (c >= 0) then
+              t = t + c
+            else
+              t = t + 0
+            end
+          end
+        end
+      end
+
+      @totals = @poolers.each_with_index.map do |x, i|
+        @results.reduce(0) do |t, a|
+          t = t + a[i]
+        end
+      end
     end
   end
 
@@ -131,7 +167,7 @@ class PoolsController < ApplicationController
       return t
     end
 
-    def calculate_results(picks_data, week_data)
+    def calculate_week_results(picks_data, week_data)
       picks_data.map do |e|
         if (e[:picks].size <= 0) then
           (0...week_data.size).map { |g| -1 }
