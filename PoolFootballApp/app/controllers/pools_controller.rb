@@ -152,8 +152,8 @@ class PoolsController < ApplicationController
 
               (unique) ? 3 : 2
             else
-              #pooler was wrong OR tie game
-              (!game[:away_won] && !game[:home_won]) ? 1 : 0
+              #pooler was wrong OR tie game OR no score
+              (!game[:away_won] && !game[:home_won] && game["intAwayScore"]!=nil && game["intHomeScore"]!=nil) ? 1 : 0
             end
           end
         end
