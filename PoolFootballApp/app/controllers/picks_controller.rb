@@ -27,6 +27,21 @@ class PicksController < ApplicationController
   # GET /picks/1
   # GET /picks/1.json
   def show
+    user = User.where(token: session[:user_token]).first
+    if (user == nil) then
+      redirect_to '/'
+      return
+    end
+
+    @pooler_name = Pooler.where(user_id: user.id).first.name
+
+    picks = @pick.pickstring.split("|")
+    @picks_data = get_week(@pick.season, @pick.week)["events"].each_with_index.map do |game, i|
+      {
+        :game => game["strEventAlternate"],
+        :pick => picks[i]
+      }
+    end
   end
 
   # GET /picks/2020/1
