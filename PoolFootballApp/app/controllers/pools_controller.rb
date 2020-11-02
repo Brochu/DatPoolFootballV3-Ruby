@@ -34,7 +34,7 @@ class PoolsController < ApplicationController
       picks_data = @poolers.map do |pooler|
         {
           :p => pooler,
-          :picks => pooler.picks.where(season: @week_info[:season], week: @week_info[:week]).to_a
+          :picks => pooler.picks.where(season: @week_info[:season], week: @week_info[:week]).first
         }
       end
 
@@ -55,7 +55,7 @@ class PoolsController < ApplicationController
         picks_data = @poolers.map do |pooler|
           {
             :p => pooler,
-            :picks => pooler.picks.where(season: @week_info[:season], week: w).to_a
+            :picks => pooler.picks.where(season: @week_info[:season], week: w).first
           }
         end
 
@@ -169,18 +169,22 @@ class PoolsController < ApplicationController
 
     def calculate_week_results(picks_data, week_data)
       picks_data.map do |e|
-        if (e[:picks].size <= 0) then
+        if (e[:picks] == nil) then
           (0...week_data.size).map { |g| -1 }
         else
-          picks = e[:picks][0]["pickstring"].split("|")
+          picks = e[:picks].parse_picks
           week_data.each_with_index.map do |game, i|
-            if ((game[:away_won] && picks[i]==game[:away_code]) ||
-              (game[:home_won] && picks[i]==game[:home_code])) then
+            curr_pick = (e[:picks].json_picks?) ? picks[game["idEvent"]] : picks[i]
+
+            if ((game[:away_won] && curr_pick==game[:away_code]) ||
+              (game[:home_won] && curr_pick==game[:home_code])) then
 
               # pooler was right
               unique = picks_data.one? do |x|
-                if (x[:picks].size > 0) then
-                  x[:picks][0]["pickstring"].split("|")[i]==picks[i]
+                if (x[:picks] != nil) then
+                  x_picks = x[:picks].parse_picks
+                  other_current = (x[:picks].json_picks?) ? x_picks[game["idEvent"]] : x_picks[i]
+                  other_current==curr_pick
                 else
                   false
                 end

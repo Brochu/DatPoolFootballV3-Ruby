@@ -1,3 +1,5 @@
+require 'json'
+
 class PicksController < ApplicationController
   before_action :set_pick, only: [:show, :edit, :update, :destroy]
 
@@ -102,19 +104,7 @@ class PicksController < ApplicationController
     @pick.pooler_id = pooler._id
 
     # Set the pick string here based on data
-    str = get_week(@pick.season, @pick.week)["events"].reduce("") do |out, game|
-      cur = params["data"][game["idEvent"]]
-
-      if (cur != nil) then
-        out << cur
-      else
-        out << "N/A"
-      end
-
-      out << "|"
-    end
-
-    @pick.pickstring = str.chop
+    @pick.pickstring = params["data"].to_json
 
     respond_to do |format|
       if @pick.save
