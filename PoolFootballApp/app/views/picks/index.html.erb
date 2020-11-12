@@ -1,32 +1,22 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Picks</h1>
+<h1>Picks - Saison <%= @max_season %></h1>
 
-<table class="w-25 table table-sm">
-  <thead>
-    <tr>
-      <th>Season</th>
-      <th>Week</th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @picks.each_with_index do |pick, i| %>
-      <% if pick != nil then %>
-        <tr>
-          <td><%= pick.season %></td>
-          <td><%= pick.week %></td>
-          <td><%= link_to 'Show', pick %></td>
-        </tr>
-      <% else %>
-        <tr>
-          <td colspan=3>
-            <%= link_to 'New Pick', new_pick_path_url(:season=> @max_season, :week=> i+1) %>
-            for Season <%= @max_season%>, Week <%= i+1 %>
-          </td>
-        </tr>
-      <% end %>
-    <% end %>
-  </tbody>
-</table>
+<div class="d-flex flex-wrap">
+  <% @picks.each_with_index do |pick, i| %>
+    <div class="card">
+      <div class="card-body">
+        <h5 class="card-title">Semaine <%= i+1 %></h5>
+        <p class="card-text">
+          <% if (pick != nil) then %>
+            <small class="text-muted"><%= link_to 'Show', pick %></small>
+          <% else %>
+            <small class="text-muted">
+              <%= link_to 'New Pick', new_pick_path_url(:season=> @max_season, :week=> i+1) %>
+            </small>
+          <% end %>
+        </p>
+      </div>
+    </div>
+  <% end %>
+</div>
