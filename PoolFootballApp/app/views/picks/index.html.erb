@@ -2,12 +2,11 @@
 
 <h1>Picks</h1>
 
-<table class="table table-sm">
+<table class="w-25 table table-sm">
   <thead>
     <tr>
       <th>Season</th>
       <th>Week</th>
-      <th>Pickstring</th>
       <th></th>
     </tr>
   </thead>
@@ -18,12 +17,11 @@
         <tr>
           <td><%= pick.season %></td>
           <td><%= pick.week %></td>
-          <td><%= pick.pickstring %></td>
           <td><%= link_to 'Show', pick %></td>
         </tr>
       <% else %>
         <tr>
-          <td colspan=4>
+          <td colspan=3>
             <%= link_to 'New Pick', new_pick_path_url(:season=> @max_season, :week=> i+1) %>
             for Season <%= @max_season%>, Week <%= i+1 %>
           </td>

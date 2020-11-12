@@ -37,11 +37,11 @@ class PicksController < ApplicationController
 
     @pooler_name = Pooler.where(user_id: user.id).first.name
 
-    picks = @pick.pickstring.split("|")
+    picks = @pick.parse_picks
     @picks_data = get_week(@pick.season, @pick.week)["events"].each_with_index.map do |game, i|
       {
         :game => game["strEventAlternate"],
-        :pick => picks[i]
+        :pick => (picks.is_a?(Hash)) ? picks[game["idEvent"]] : picks[i]
       }
     end
   end
