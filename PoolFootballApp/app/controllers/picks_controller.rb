@@ -18,11 +18,11 @@ class PicksController < ApplicationController
     end)
     @max_season = (@max_season!=nil) ? @max_season.season : Date.today.year
 
-    criteria = Pick.where(pooler_id: pooler._id, season: @max_season).order_by(week: 1)
-    @picks = criteria.to_a
+    data = Pick.where(pooler_id: pooler._id, season: @max_season).order_by(week: 1).to_a
+    @picks = []
 
-    (1..20).each do |i|
-      @picks[i] = @picks[i]
+    (0..20).each do |i|
+      @picks[i] = data.detect { |p| p.week == i+1 }
     end
   end
 
