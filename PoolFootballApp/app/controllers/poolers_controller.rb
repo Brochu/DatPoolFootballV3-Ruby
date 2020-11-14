@@ -17,6 +17,7 @@ class PoolersController < ApplicationController
   # GET /poolers/1
   # GET /poolers/1.json
   def show
+    @pool = Pool.where(id: @pooler.pool_id).first
   end
 
   # GET /poolers/new
