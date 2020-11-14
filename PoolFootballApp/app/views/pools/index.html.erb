@@ -1,11 +1,11 @@
 <p id="notice"><%= notice %></p>
 
-<h3>
+<h4>
   Pour saison <%= @week_info[:season] %>
   <% if (params[:season_total] == nil) then %>
     - semaine <%= @week_info[:week] %>
   <% end %>
-</h3>
+</h4>
 
 <% if (params[:season_total] == nil) then %>
 
@@ -61,19 +61,32 @@
   </tbody>
 </table>
 
-<div>
-  Autres semaines
+Autres semaines
+<div class="btn-group" role="group">
   <% (1..21).each do |w| %>
     <% if (w == @week_info[:week].to_i) then %>
-      - <span><%= w %></span>
+      <a href="#"
+        class="btn btn-outline-secondary btn-sm disabled"
+        role="button">
+          <small><%= w %></small>
+      </a>
     <% else %>
-      - <span><%= link_to "#{w}", pools_path(season: @week_info[:season], week: w) %></span>
+      <a href="<%= url_for pools_path(season: @week_info[:season], week: w) %>"
+        class="btn btn-primary btn-sm"
+        role="button">
+          <small><%= w %></small>
+      </a>
     <% end %>
   <% end %>
 </div>
+
 <div>
   Total de la saison
-  <%= link_to @week_info[:season], pools_path(season: @week_info[:season], season_total: true) %>
+  <a href="<%= url_for pools_path(season: @week_info[:season], season_total: true) %>"
+    class="btn btn-primary btn-sm"
+    role="button">
+      <small><%= @week_info[:season] %></small>
+  </a>
 </div>
 
 <% else %>

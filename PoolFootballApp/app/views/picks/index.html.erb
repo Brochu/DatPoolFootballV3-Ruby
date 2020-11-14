@@ -3,7 +3,7 @@
 <h1>Picks - Saison <%= @max_season %></h1>
 <h5>Choisir une semaine ...</h5>
 
-<div class="btn-group" role="group" aria-label="Basic example">
+<div class="btn-group" role="group">
   <% @picks.each_with_index do |pick, i| %>
     <% if (pick != nil) then %>
       <a href="<%= url_for pick %>"
