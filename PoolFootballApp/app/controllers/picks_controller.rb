@@ -48,9 +48,33 @@ class PicksController < ApplicationController
 
   # GET /picks/2020/1
   def show_week
-    # add logic to show the picks in a better way
-    # maybe get the picks for all poolers in pool
-    @pick = Pick.where(season: params[:season], week: params[:week]).first
+    user = User.where(token: session[:user_token]).first
+    if (user == nil) then
+      redirect_to '/'
+      return
+    end
+
+    pool = Pooler.where(user_id: user.id).first.pool
+    @poolers_data = pool.poolers.map do |pooler|
+      p = Pick.where(season: params[:season], week: params[:week], pooler_id: pooler.id).first
+      {
+        :pooler_name => pooler.name,
+        :picks => (p != nil) ? p.parse_picks : nil
+      }
+    end
+
+    @picks_data = get_week(params[:season], params[:week])["events"].each_with_index.map do |game, i|
+      {
+        :game => game["strEventAlternate"],
+        :picks => @poolers_data.map do |p|
+          if (p[:picks] != nil) then
+            (p[:picks].is_a?(Hash)) ? p[:picks][game["idEvent"]] : p[:picks][i]
+          else
+            nil
+          end
+        end
+      }
+    end
   end
 
   # GET /picks/2020

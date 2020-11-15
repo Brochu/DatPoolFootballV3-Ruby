@@ -1,23 +1,25 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>Season:</strong>
-  <%= @pick.season %>
-</p>
+<table class="table table-sm table-bordered">
+  <tr>
+    <th>Game</th>
+    <% @poolers_data.each do |pooler| %>
+      <th><%= pooler[:pooler_name] %></th>
+    <% end %>
+  </tr>
 
-<p>
-  <strong>Week:</strong>
-  <%= @pick.week %>
-</p>
-
-<p>
-  <strong>Pickstring:</strong>
-  <%= @pick.pickstring %>
-</p>
-
-<p>
-  <strong>Pooler:</strong>
-  <%= @pick.pooler_id %>
-</p>
+  <% @picks_data.each do |p| %>
+  <tr>
+    <td><%= p[:game] %></td>
+    <% p[:picks].each do |t| %>
+      <% if (t != nil) then %>
+        <td><%= image_tag("#{t}.png", size: "21") %></td>
+      <% else %>
+        <td><%= t %></td>
+      <% end %>
+    <% end %>
+  </tr>
+  <% end %>
+</table>
 
 <%= link_to 'Back', picks_path %>
