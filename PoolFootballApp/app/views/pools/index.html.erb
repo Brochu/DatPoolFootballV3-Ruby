@@ -51,7 +51,7 @@
     </tr>
   <% end %>
   <tr>
-    <th colspan="7" style="text-align: center; border-top: 2px solid #000">Totals -></th>
+    <th colspan="7" style="text-align: center; border-top: 2px solid #000">Total -></th>
     <% @totals.each do |t| %>
       <th style="text-align: center; border-top: 2px solid #000">
         <%= (t >= 0) ? t : '-' %>
@@ -107,7 +107,7 @@ Autres semaines
     </tr>
   <% end %>
   <tr>
-    <th>Totals</th>
+    <th>Total</th>
     <% @totals.each do |t| %>
       <th><%= t %></th>
     <% end %>
