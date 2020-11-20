@@ -13,13 +13,13 @@
     <td><%= p[:game] %></td>
     <% p[:picks].each do |t| %>
       <% if (t != nil) then %>
-        <td><%= image_tag("#{t}.png", size: "21") %></td>
+        <td style="text-align: center"><%= image_tag("#{t}.png", size: "21") %></td>
       <% else %>
-        <td><%= t %></td>
+        <td style="text-align: center"><%= t %></td>
       <% end %>
     <% end %>
   </tr>
   <% end %>
 </table>
 
-<%= link_to 'Back', picks_path %>
+<%= link_to 'Retour', picks_path %>

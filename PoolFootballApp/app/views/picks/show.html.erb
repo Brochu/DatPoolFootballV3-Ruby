@@ -6,10 +6,15 @@
 <table class="w-50 table table-sm table-bordered">
   <% @picks_data.each do |e| %>
     <tr>
-      <td><%= e[:game] %></td>
-      <td><%= e[:pick] %></td>
+      <td><%= e[:game][:away_code] %> VS. <%= e[:game][:home_code] %></td>
+      <% if (e[:pick] != nil) then %>
+        <td style="text-align: center"><%= image_tag("#{e[:pick]}.png", size: "21") %></td>
+      <% else %>
+        <td style="text-align: center"><%= e[:pick] %></td>
+      <% end %>
     </tr>
   <% end %>
 </table>
 
-<%= link_to 'Back', picks_path %>
+<%= link_to 'Retour', picks_path %> | 
+<%= link_to 'Choix du pool', search_pick_url(:season=> @pick.season, :week=> @pick.week)%>

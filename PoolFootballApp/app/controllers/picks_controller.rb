@@ -40,7 +40,10 @@ class PicksController < ApplicationController
     picks = @pick.parse_picks
     @picks_data = get_week(@pick.season, @pick.week)["events"].each_with_index.map do |game, i|
       {
-        :game => game["strEventAlternate"],
+        :game => {
+          :away_code => get_shortname(game["strAwayTeam"]),
+          :home_code => get_shortname(game["strHomeTeam"])
+        },
         :pick => (picks.is_a?(Hash)) ? picks[game["idEvent"]] : picks[i]
       }
     end
