@@ -22,6 +22,7 @@ class ApplicationController < ActionController::Base
         "LA" => "Los Angeles Rams",
         "LAC" => "Los Angeles Chargers",
         "LV" => "Las Vegas Raiders",
+        "OAK" => "Oakland Raiders",
         "MIA" => "Miami Dolphins",
         "MIN" => "Minnesota Vikings",
         "NE" => "New England Patriots",
@@ -57,6 +58,7 @@ class ApplicationController < ActionController::Base
         "Los Angeles Rams" => "LA",
         "Los Angeles Chargers" => "LAC",
         "Las Vegas Raiders" => "LV",
+        "Oakland Raiders" => "LV",
         "Miami Dolphins" => "MIA",
         "Minnesota Vikings" => "MIN",
         "New England Patriots" => "NE",
@@ -69,7 +71,8 @@ class ApplicationController < ActionController::Base
         "San Francisco 49ers" => "SF",
         "Tampa Bay Buccaneers" => "TB",
         "Tennessee Titans" => "TEN",
-        "Washington" => "WAS"
+        "Washington" => "WAS",
+        "Washington Redskins" => "WAS"
     }
 
     def get_teams
@@ -85,11 +88,16 @@ class ApplicationController < ActionController::Base
     end
 
     def get_week(season, week)
+        uri = URI("https://www.thesportsdb.com/api/v1/json/1/eventsround.php")
+
         # Gets the results for a given season and week
         # 01 - 17: Regular season
-        # 18 - 21: Post season
-        uri = URI("https://www.thesportsdb.com/api/v1/json/1/eventsround.php")
-        params = { :id => 4391, :r => week, :s => season }
+        # 18 - 20: Post season
+        # 200: Final game (SuperBowl)
+
+        # Some changes needed here to handle final game being round 200...
+        # We need to convert week 21 to 200... saved as week 21 in my db
+        params = { :id => 4391, :r => (week != "21") ? week : 200, :s => season }
         uri.query = URI.encode_www_form(params)
 
         res = Net::HTTP.get_response(uri)
