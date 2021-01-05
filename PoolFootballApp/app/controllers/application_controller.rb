@@ -89,6 +89,7 @@ class ApplicationController < ActionController::Base
 
     def get_week(season, week)
         uri = URI("https://www.thesportsdb.com/api/v1/json/1/eventsround.php")
+        uri_nfl = URI("https://nflcdns.nfl.com/ajax/scorestrip?season=2020&seasonType=POST&week=18")
 
         # Gets the results for a given season and week
         # 01 - 17: Regular season
@@ -98,9 +99,23 @@ class ApplicationController < ActionController::Base
         # Some changes needed here to handle final game being round 200...
         # We need to convert week 21 to 200... saved as week 21 in my db
         params = { :id => 4391, :r => (week != "21") ? week : 200, :s => season }
+        params_nfl = {
+            :season => season,
+            :seasonType => week.to_i < 18 ? "REG" : "POST",
+            :week => (week != "21") ? week : "22"
+        }
         uri.query = URI.encode_www_form(params)
+        uri_nfl.query = URI.encode_www_form(params_nfl)
 
         res = Net::HTTP.get_response(uri)
+        res_nfl = Net::HTTP.get_response(uri_nfl)
+
+        test = Hash.from_xml(res_nfl.body)
+        test = test["ss"]["gms"]["g"]
+        test.each do |x|
+            puts x.inspect + "\n"
+        end
+
         return JSON.parse(res.body)
     end
 end
