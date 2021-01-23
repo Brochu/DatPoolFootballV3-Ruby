@@ -110,12 +110,18 @@ class ApplicationController < ActionController::Base
         res = Net::HTTP.get_response(uri)
         res_nfl = Net::HTTP.get_response(uri_nfl)
 
-        test = Hash.from_xml(res_nfl.body)
-        test = test["ss"]["gms"]["g"]
-        test.each do |x|
-            puts x.inspect + "\n"
+        output = JSON.parse(res.body)
+        output["events"].each do |match|
+            puts "===>#{match["strEventAlternate"].inspect}\n"
         end
 
-        return JSON.parse(res.body)
+        puts "\n"
+
+        nfl_output = Hash.from_xml(res_nfl.body)
+        nfl_output["ss"]["gms"]["g"].each do |match|
+            puts "===>#{match["h"].inspect} VS. #{match["v"].inspect}\n"
+        end
+
+        return output
     end
 end
