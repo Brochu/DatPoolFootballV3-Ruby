@@ -23,7 +23,7 @@ class PoolsController < ApplicationController
     end
 
     if (params[:season_total] == nil) then
-      @week_data = get_week(@week_info[:season], @week_info[:week])["events"].map do |x|
+      @week_data = get_week(@week_info[:season].to_s, @week_info[:week].to_s)["events"].map do |x|
         x[:home_code] = get_shortname(x["strHomeTeam"])
         x[:home_won] = x["intHomeScore"].to_i > x["intAwayScore"].to_i
 

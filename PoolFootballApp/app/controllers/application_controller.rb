@@ -99,16 +99,16 @@ class ApplicationController < ActionController::Base
         # Some changes needed here to handle final game being round 200...
         # We need to convert week 21 to 200... saved as week 21 in my db
         params = { :id => 4391, :r => (week != "21") ? week : 200, :s => season }
-        params_nfl = {
-            :season => season,
-            :seasonType => week.to_i < 18 ? "REG" : "POST",
-            :week => (week != "21") ? week : "22"
-        }
+        #params_nfl = {
+        #    :season => season,
+        #    :seasonType => week.to_i < 18 ? "REG" : "POST",
+        #    :week => (week != "21") ? week : "22"
+        #}
         uri.query = URI.encode_www_form(params)
-        uri_nfl.query = URI.encode_www_form(params_nfl)
+        #uri_nfl.query = URI.encode_www_form(params_nfl)
 
         res = Net::HTTP.get_response(uri)
-        res_nfl = Net::HTTP.get_response(uri_nfl)
+        #res_nfl = Net::HTTP.get_response(uri_nfl)
 
         output = JSON.parse(res.body)
         output["events"].each do |match|
@@ -117,10 +117,10 @@ class ApplicationController < ActionController::Base
 
         puts "\n"
 
-        nfl_output = Hash.from_xml(res_nfl.body)
-        nfl_output["ss"]["gms"]["g"].each do |match|
-            puts "===>#{match["h"].inspect} VS. #{match["v"].inspect}\n"
-        end
+        #nfl_output = Hash.from_xml(res_nfl.body)
+        #nfl_output["ss"]["gms"]["g"].each do |match|
+        #    puts "===>#{match["h"].inspect} VS. #{match["v"].inspect}\n"
+        #end
 
         return output
     end
