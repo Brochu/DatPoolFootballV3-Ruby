@@ -44,7 +44,7 @@ class PoolsController < ApplicationController
       end
     else
       @results = (1..@week_info[:week]).map do |w|
-        week_data = get_week(@week_info[:season], w)["events"].map do |x|
+        week_data = get_week(@week_info[:season].to_s, w.to_s)["events"].map do |x|
           x[:home_code] = get_shortname(x["strHomeTeam"])
           x[:home_won] = x["intHomeScore"].to_i > x["intAwayScore"].to_i
 
