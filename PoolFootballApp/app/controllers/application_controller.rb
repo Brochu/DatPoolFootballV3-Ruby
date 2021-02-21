@@ -22,7 +22,7 @@ class ApplicationController < ActionController::Base
         "LA" => "Los Angeles Rams",
         "LAC" => "Los Angeles Chargers",
         "LV" => "Las Vegas Raiders",
-        "OAK" => "Oakland Raiders",
+        # "OAK" => "Oakland Raiders",
         "MIA" => "Miami Dolphins",
         "MIN" => "Minnesota Vikings",
         "NE" => "New England Patriots",
@@ -133,7 +133,7 @@ class ApplicationController < ActionController::Base
     helper_method :get_week_name
 
     def get_week_long_name(week_num)
-        return "Semaine " + week_num.to_s
+        return "semaine %i" % [week_num]
     end
     helper_method :get_week_long_name
 end
