@@ -124,4 +124,16 @@ class ApplicationController < ActionController::Base
 
         return output
     end
+
+    def get_week_name(week_num)
+        # Get week name, for post season we can have full names:
+        #     Wildcards, Division, Conference, SuperBowl
+        return week_num.to_s
+    end
+    helper_method :get_week_name
+
+    def get_week_long_name(week_num)
+        return "Semaine " + week_num.to_s
+    end
+    helper_method :get_week_long_name
 end
