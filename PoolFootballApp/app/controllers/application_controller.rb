@@ -126,14 +126,40 @@ class ApplicationController < ActionController::Base
     end
 
     def get_week_name(week_num)
-        # Get week name, for post season we can have full names:
-        #     Wildcards, Division, Conference, SuperBowl
-        return week_num.to_s
+        n = 0
+        if week_num.is_a? String
+            n = week_num.to_i
+        else
+            n = week_num
+        end
+
+        if n < 18
+            return n.to_s
+        else
+            return "WC" if n == 18
+            return "DV" if n == 19
+            return "CF" if n == 20
+            return "SB" if n == 21
+        end
     end
     helper_method :get_week_name
 
     def get_week_long_name(week_num)
-        return "semaine %i" % [week_num]
+        n = 0
+        if week_num.is_a? String
+            n = week_num.to_i
+        else
+            n = week_num
+        end
+
+        if n < 18
+            return "semaine %i" % [n]
+        else
+            return "WildCards" if n == 18
+            return "Division Round" if n == 19
+            return "Conference Championship" if n == 20
+            return "SuperBowl" if n == 21
+        end
     end
     helper_method :get_week_long_name
 end

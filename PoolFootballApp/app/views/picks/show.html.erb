@@ -1,6 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<h2>Choix pour saison <%= @pick.season %> - semaine <%= @pick.week %></h2>
+<h2>Choix pour saison <%= @pick.season %> - <%= get_week_long_name(@pick.week) %></h2>
 <h4>Par <%= @pooler_name %></h4>
 
 <table class="w-50 table table-sm table-bordered">

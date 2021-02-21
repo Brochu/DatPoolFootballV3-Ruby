@@ -3,7 +3,7 @@
 <h4>
   Pour saison <%= @week_info[:season] %>
   <% if (params[:season_total] == nil) then %>
-    - semaine <%= @week_info[:week] %>
+    - <%= get_week_long_name(@week_info[:week]) %>
   <% end %>
 </h4>
 
@@ -68,13 +68,13 @@ Autres semaines
       <a href="#"
         class="btn btn-outline-secondary btn-sm disabled"
         role="button">
-          <small><%= w %></small>
+          <small><%= get_week_name(w) %></small>
       </a>
     <% else %>
       <a href="<%= url_for pools_path(season: @week_info[:season], week: w) %>"
         class="btn btn-primary btn-sm"
         role="button">
-          <small><%= w %></small>
+          <small><%= get_week_name(w) %></small>
       </a>
     <% end %>
   <% end %>
@@ -100,7 +100,7 @@ Autres semaines
   </tr>
   <% @results.each_with_index do |result, i| %>
     <tr>
-      <td>Semaine <%= i+1 %></td>
+      <td><%= get_week_long_name(i+1) %></td>
       <% result.each do |score| %>
         <td><%= score %></td>
       <% end %>
