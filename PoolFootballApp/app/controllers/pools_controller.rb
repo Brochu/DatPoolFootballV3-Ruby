@@ -38,7 +38,7 @@ class PoolsController < ApplicationController
         }
       end
 
-      @results = calculate_week_results(picks_data, @week_data)
+      @results = calculate_week_results(picks_data, @week_data, @week_info[:week])
       @totals = @results.map do |r|
         r.reduce(0) { |t, c| t = t + c }
       end
@@ -59,7 +59,7 @@ class PoolsController < ApplicationController
           }
         end
 
-        calculate_week_results(picks_data, week_data).map do |r|
+        calculate_week_results(picks_data, week_data, w).map do |r|
           r.reduce(0) do |t, c|
             if (c >= 0) then
               t = t + c
@@ -167,7 +167,7 @@ class PoolsController < ApplicationController
       return t
     end
 
-    def calculate_week_results(picks_data, week_data)
+    def calculate_week_results(picks_data, week_data, week)
       picks_data.map do |e|
         if (e[:picks] == nil) then
           (0...week_data.size).map { |g| -1 }
@@ -190,13 +190,32 @@ class PoolsController < ApplicationController
                 end
               end
 
-              (unique) ? 3 : 2
+              correctScore = get_correct_score(week)
+              (unique) ? (1.5*correctScore).to_i : correctScore
             else
               #pooler was wrong OR tie game OR no score
-              (!game[:away_won] && !game[:home_won] && game["intAwayScore"]!=nil && game["intHomeScore"]!=nil) ? 1 : 0
+              tied = (!game[:away_won] && !game[:home_won] &&
+                      game["intAwayScore"] != nil && game["intHomeScore"] != nil)
+
+              (tied) ? 1 : 0
             end
           end
         end
       end
+    end
+
+    def get_correct_score(week)
+      n = 0
+      if week.is_a? String
+          n = week.to_i
+      else
+          n = week
+      end
+
+      return 2 if n < 18
+      return 4 if n == 18
+      return 6 if n == 19
+      return 8 if n == 20
+      return 10 if n == 21
     end
 end
