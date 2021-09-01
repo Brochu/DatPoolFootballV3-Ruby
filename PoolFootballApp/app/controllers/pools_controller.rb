@@ -161,9 +161,6 @@ class PoolsController < ApplicationController
         t[:week] = 1
       end
 
-      print(t.inspect)
-      puts "\n"
-
       return t
     end
 

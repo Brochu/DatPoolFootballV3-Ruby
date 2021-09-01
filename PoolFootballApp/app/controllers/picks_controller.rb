@@ -13,7 +13,7 @@ class PicksController < ApplicationController
     end
 
     pooler = Pooler.where(user_id: user.id).first
-    @max_season = (Pick.where(pooler_id: pooler._id).max_by do |x| 
+    @max_season = (Pick.all.max_by do |x|
       x.season
     end)
     @max_season = (@max_season!=nil) ? @max_season.season : Date.today.year
