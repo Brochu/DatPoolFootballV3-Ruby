@@ -1,6 +1,10 @@
 {
 	"environment":"production",
-	"port":80,
 	"daemonize":true,
-	"user":"footpoolapp"
+	"user":"footpoolapp",
+	"port":443,
+
+	"ssl": true,
+	"ssl_certificate": "/etc/letsencrypt/live/brochudev.duckdns.org/cert.pem",
+	"ssl_certificate_key": "/etc/letsencrypt/live/brochudev.duckdns.org/privkey.pem"
 }
