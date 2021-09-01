@@ -148,12 +148,9 @@ class PoolsController < ApplicationController
         max_season = pooler.picks.max_by { |p| p.season }
         if (max_season != nil && max_season.season > maxes[:season]) then
           maxes[:season] = max_season.season
+          maxes[:week] = pooler.picks.where(season: max_season.season).max_by { |p| p.week }.week
         end
 
-        max_week = pooler.picks.max_by { |p| p.week }
-        if (max_week != nil && max_week.week > maxes[:week]) then
-          maxes[:week] = max_week.week
-        end
         maxes
       end
 
@@ -163,6 +160,9 @@ class PoolsController < ApplicationController
       if (t[:week] == -1) then
         t[:week] = 1
       end
+
+      print(t.inspect)
+      puts "\n"
 
       return t
     end
