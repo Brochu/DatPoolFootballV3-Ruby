@@ -88,7 +88,7 @@ class ApplicationController < ActionController::Base
     end
 
     def get_week(season, week)
-        uri = URI("https://www.thesportsdb.com/api/v1/json/1/eventsround.php")
+        uri = URI("https://www.thesportsdb.com/api/v1/json/2/eventsround.php")
         uri_nfl = URI("https://nflcdns.nfl.com/ajax/scorestrip?season=2020&seasonType=POST&week=18")
 
         # Gets the results for a given season and week
