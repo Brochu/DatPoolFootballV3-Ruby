@@ -1,3 +1,4 @@
+# Class to handle all process to Poolers data
 class PoolersController < ApplicationController
   before_action :set_pooler, only: [:show, :edit, :update, :destroy]
 
@@ -5,7 +6,7 @@ class PoolersController < ApplicationController
   # GET /poolers.json
   def index
     user = User.where(token: session[:user_token]).first
-    if (user == nil) then
+    if user.nil?
       redirect_to '/'
       return
     end
@@ -23,13 +24,13 @@ class PoolersController < ApplicationController
   # GET /poolers/new
   def new
     user = User.where(token: session[:user_token]).first
-    if (user == nil) then
+    if user.nil?
       redirect_to '/'
       return
     end
 
     @pooler = Pooler.where(user_id: user.id).first
-    if (@pooler != nil) then
+    if !@pooler.nil?
       redirect_to @pooler
       return
     end
@@ -49,7 +50,7 @@ class PoolersController < ApplicationController
     @pooler = Pooler.new(pooler_params)
 
     @user = User.where(token: session[:user_token]).first
-    if (@user == nil) then
+    if @user.nil?
       redirect_to '/'
       return
     end
@@ -84,22 +85,23 @@ class PoolersController < ApplicationController
 
   # DELETE /poolers/1
   # DELETE /poolers/1.json
-  #def destroy
+  # def destroy
   #  @pooler.destroy
   #  respond_to do |format|
   #    format.html { redirect_to poolers_url, notice: 'Pooler was successfully destroyed.' }
   #    format.json { head :no_content }
   #  end
-  #end
+  # end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_pooler
-      @pooler = Pooler.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def pooler_params
-      params.require(:pooler).permit(:name, :favTeam)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_pooler
+    @pooler = Pooler.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def pooler_params
+    params.require(:pooler).permit(:name, :favTeam)
+  end
 end

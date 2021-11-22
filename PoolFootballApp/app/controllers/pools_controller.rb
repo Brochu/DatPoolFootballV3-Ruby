@@ -1,3 +1,4 @@
+# Class to handle all process to Pools data
 class PoolsController < ApplicationController
   before_action :set_pool, only: [:show, :edit, :update, :destroy]
 
@@ -5,7 +6,7 @@ class PoolsController < ApplicationController
   # GET /pools.json
   def index
     user = User.where(token: session[:user_token]).first
-    if (user == nil) then
+    if user.nil?
       redirect_to '/'
       return
     end
@@ -13,7 +14,7 @@ class PoolsController < ApplicationController
     @pool = Pooler.where(user_id: user.id).first.pool
     @poolers = @pool.poolers.to_a
 
-    if (params[:season] != nil && params[:week] != nil) then
+    if !params[:season].nil? && !params[:week].nil?
       @week_info = {
         season: params[:season],
         week: params[:week]
@@ -22,19 +23,19 @@ class PoolsController < ApplicationController
       @week_info = find_current_week(@poolers)
     end
 
-    if (params[:season_total] == nil) then
-      @week_data = get_week(@week_info[:season].to_s, @week_info[:week].to_s)["events"].map do |x|
-        x[:home_code] = get_shortname(x["strHomeTeam"])
-        x[:home_won] = x["intHomeScore"].to_i > x["intAwayScore"].to_i
+    if params[:season_total].nil?
+      @week_data = get_week(@week_info[:season].to_s, @week_info[:week].to_s)['events'].map do |x|
+        x[:home_code] = get_shortname(x['strHomeTeam'])
+        x[:home_won] = x['intHomeScore'].to_i > x['intAwayScore'].to_i
 
-        x[:away_code] = get_shortname(x["strAwayTeam"])
-        x[:away_won] = x["intAwayScore"].to_i > x["intHomeScore"].to_i
+        x[:away_code] = get_shortname(x['strAwayTeam'])
+        x[:away_won] = x['intAwayScore'].to_i > x['intHomeScore'].to_i
         x
       end
       picks_data = @poolers.map do |pooler|
         {
-          :p => pooler,
-          :picks => pooler.picks.where(season: @week_info[:season], week: @week_info[:week]).first
+          p: pooler,
+          picks: pooler.picks.where(season: @week_info[:season], week: @week_info[:week]).first
         }
       end
 
@@ -44,33 +45,29 @@ class PoolsController < ApplicationController
       end
     else
       @results = (1..@week_info[:week]).map do |w|
-        week_data = get_week(@week_info[:season].to_s, w.to_s)["events"].map do |x|
-          x[:home_code] = get_shortname(x["strHomeTeam"])
-          x[:home_won] = x["intHomeScore"].to_i > x["intAwayScore"].to_i
+        week_data = get_week(@week_info[:season].to_s, w.to_s)['events'].map do |x|
+          x[:home_code] = get_shortname(x['strHomeTeam'])
+          x[:home_won] = x['intHomeScore'].to_i > x['intAwayScore'].to_i
 
-          x[:away_code] = get_shortname(x["strAwayTeam"])
-          x[:away_won] = x["intAwayScore"].to_i > x["intHomeScore"].to_i
+          x[:away_code] = get_shortname(x['strAwayTeam'])
+          x[:away_won] = x['intAwayScore'].to_i > x['intHomeScore'].to_i
           x
         end
         picks_data = @poolers.map do |pooler|
           {
-            :p => pooler,
-            :picks => pooler.picks.where(season: @week_info[:season], week: w).first
+            p: pooler,
+            picks: pooler.picks.where(season: @week_info[:season], week: w).first
           }
         end
 
         calculate_week_results(picks_data, week_data, w).map do |r|
           r.reduce(0) do |t, c|
-            if (c >= 0) then
-              t = t + c
-            else
-              t = t + 0
-            end
+            t = c >= 0 ? t + c : t + 0
           end
         end
       end
 
-      @totals = @poolers.each_with_index.map do |x, i|
+      @totals = @poolers.each_with_index.map do |_, i|
         @results.reduce(0) do |t, a|
           t = t + a[i]
         end
@@ -81,6 +78,7 @@ class PoolsController < ApplicationController
   # GET /pools/1
   # GET /pools/1.json
   def show
+    puts '[Pools][Show]'
   end
 
   # GET /pools/new
@@ -90,6 +88,7 @@ class PoolsController < ApplicationController
 
   # GET /pools/1/edit
   def edit
+    puts '[Pools][Edit]'
   end
 
   # POST /pools
@@ -133,20 +132,22 @@ class PoolsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_pool
-      @pool = Pool.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def pool_params
-      params.require(:pool).permit(:name, :motp)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_pool
+    @pool = Pool.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def pool_params
+    params.require(:pool).permit(:name, :motp)
+  end
 
     def find_current_week(poolers)
-      t = poolers.reduce({ :season => -1, :week => -1}) do |maxes, pooler|
+      t = poolers.reduce({ season: -1, week: -1 }) do |maxes, pooler|
         max_season = pooler.picks.max_by { |p| p.season }
-        if (max_season != nil && max_season.season > maxes[:season]) then
+
+        if !max_season.nil? && max_season.season > maxes[:season]
           maxes[:season] = max_season.season
           maxes[:week] = pooler.picks.where(season: max_season.season).max_by { |p| p.week }.week
         end
@@ -154,65 +155,57 @@ class PoolsController < ApplicationController
         maxes
       end
 
-      if (t[:season] == -1) then
-        t[:season] = Date.today.year
-      end
-      if (t[:week] == -1) then
-        t[:week] = 1
-      end
+      t[:season] = Date.today.year if t[:season] == -1
+      t[:week] = 1 if t[:week] == -1
 
-      return t
+      t
     end
 
     def calculate_week_results(picks_data, week_data, week)
       picks_data.map do |e|
-        if (e[:picks] == nil) then
-          (0...week_data.size).map { |g| -1 }
+        if e[:picks].nil?
+          (0...week_data.size).map { |_| -1 }
         else
           picks = e[:picks].parse_picks
           week_data.each_with_index.map do |game, i|
-            curr_pick = (e[:picks].json_picks?) ? picks[game["idEvent"]] : picks[i]
+            curr_pick = e[:picks].json_picks? ? picks[game['idEvent']] : picks[i]
 
-            if ((game[:away_won] && curr_pick==game[:away_code]) ||
-              (game[:home_won] && curr_pick==game[:home_code])) then
+            if (game[:away_won] && curr_pick == game[:away_code]) ||
+               (game[:home_won] && curr_pick == game[:home_code])
 
               # pooler was right
               unique = picks_data.one? do |x|
-                if (x[:picks] != nil) then
+                if !x[:picks].nil?
                   x_picks = x[:picks].parse_picks
-                  other_current = (x[:picks].json_picks?) ? x_picks[game["idEvent"]] : x_picks[i]
-                  other_current==curr_pick
+                  other_current = x[:picks].json_picks? ? x_picks[game['idEvent']] : x_picks[i]
+                  other_current == curr_pick
                 else
                   false
                 end
               end
 
               correctScore = get_correct_score(week)
-              (unique) ? (1.5*correctScore).to_i : correctScore
+              unique ? (1.5*correctScore).to_i : correctScore
             else
-              #pooler was wrong OR tie game OR no score
+              # pooler was wrong OR tie game OR no score
               tied = (!game[:away_won] && !game[:home_won] &&
-                      game["intAwayScore"] != nil && game["intHomeScore"] != nil)
+                      !game['intAwayScore'].nil? && !game['intHomeScore'].nil?)
 
-              (tied) ? 1 : 0
+              tied ? 1 : 0
             end
           end
         end
       end
     end
 
-    def get_correct_score(week)
-      n = 0
-      if week.is_a? String
-          n = week.to_i
-      else
-          n = week
-      end
+  def get_correct_score(week)
+    n = week
+    n = n.to_i if n.is_a? String
 
-      return 2 if n < 18
-      return 4 if n == 18
-      return 6 if n == 19
-      return 8 if n == 20
-      return 10 if n == 21
-    end
+    return 2 if n < 18
+    return 4 if n == 18
+    return 6 if n == 19
+    return 8 if n == 20
+    return 10 if n == 21
+  end
 end
