@@ -202,10 +202,10 @@ class PoolsController < ApplicationController
     n = week
     n = n.to_i if n.is_a? String
 
-    return 2 if n < 18
-    return 4 if n == 18
-    return 6 if n == 19
-    return 8 if n == 20
-    return 10 if n == 21
+    return 2 if n < 19
+    return 4 if n == 19
+    return 6 if n == 20
+    return 8 if n == 21
+    return 10 if n == 22
   end
 end

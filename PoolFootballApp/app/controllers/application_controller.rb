@@ -98,7 +98,7 @@ class ApplicationController < ActionController::Base
 
     # Some changes needed here to handle final game being round 200...
     # We need to convert week 21 to 200... saved as week 21 in my db
-    params = { id: 4391, r: week != '21' ? week : 200, s: season }
+    params = { id: 4391, r: week != '22' ? week : 200, s: season }
     uri.query = URI.encode_www_form(params)
 
     res = Net::HTTP.get_response(uri)
@@ -115,11 +115,11 @@ class ApplicationController < ActionController::Base
     n = week_num
     n = n.to_i if n.is_a? String
 
-    return n.to_s if n < 18
-    return 'WC' if n == 18
-    return 'DV' if n == 19
-    return 'CF' if n == 20
-    return 'SB' if n == 21
+    return n.to_s if n < 19
+    return 'WC' if n == 19
+    return 'DV' if n == 20
+    return 'CF' if n == 21
+    return 'SB' if n == 22
   end
   helper_method :get_week_name
 
@@ -127,11 +127,11 @@ class ApplicationController < ActionController::Base
     n = week_num
     n = n.to_i if n.is_a? String
 
-    return "semaine %i" % [n] if n < 18
-    return 'WildCards' if n == 18
-    return 'Division Round' if n == 19
-    return 'Conference Championship' if n == 20
-    return 'SuperBowl' if n == 21
+    return "semaine %i" % [n] if n < 19
+    return 'WildCards' if n == 19
+    return 'Division Round' if n == 20
+    return 'Conference Championship' if n == 21
+    return 'SuperBowl' if n == 22
   end
   helper_method :get_week_long_name
 end
