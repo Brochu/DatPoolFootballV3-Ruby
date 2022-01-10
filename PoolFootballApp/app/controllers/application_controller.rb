@@ -96,9 +96,14 @@ class ApplicationController < ActionController::Base
     # 18 - 20: Post season
     # 200: Final game (SuperBowl)
 
-    # Some changes needed here to handle final game being round 200...
-    # We need to convert week 21 to 200... saved as week 21 in my db
-    params = { id: 4391, r: week != '22' ? week : 200, s: season }
+    # Special handling of round values for TheSportDB
+    realWeek = week;
+    realWeek = 160 if week == '19';
+    realWeek = 170 if week == '20';
+    realWeek = 180 if week == '21';
+    realWeek = 200 if week == '22';
+
+    params = { id: 4391, r: realWeek, s: season }
     uri.query = URI.encode_www_form(params)
 
     res = Net::HTTP.get_response(uri)
