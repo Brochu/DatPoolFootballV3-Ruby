@@ -98,9 +98,9 @@ class ApplicationController < ActionController::Base
 
     # Special handling of round values for TheSportDB
     realWeek = week;
-    #realWeek = 160 if week == '19';
-    #realWeek = 170 if week == '20';
-    #realWeek = 180 if week == '21';
+    realWeek = 160 if week == '19';
+    realWeek = 125 if week == '20';
+    realWeek = 150 if week == '21';
     realWeek = 200 if week == '22';
 
     params = { id: 4391, r: realWeek, s: season }
